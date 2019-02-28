@@ -18,15 +18,15 @@ public class AIPlayer extends Player{
 
         turnCompleted = true;
 
-
-
-        if(getNextPlayer().getCompleted() == false) {
-            getNextPlayer().startTurn(false);
-        }
+        startNextTurn();
 
     }
 
     void startTurn(boolean startingPlayer) {
+
+        parent.getScoreboard().setTurnPrompt(playerNumber);
+
+        turnStarted = true;
         this.startingPlayer = startingPlayer;
         if(hand.getCards().size() == 0) return;
         makeBestMove();
@@ -55,6 +55,34 @@ public class AIPlayer extends Player{
 
     void makeBid() {
 
-        handleBid(-1);
+        Random rand = new Random();
+
+
+        int bid = 0;
+
+        switch(rand.nextInt(10)) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                bid = 0;
+                break;
+            case 7:
+                bid = 2;
+                break;
+            case 8:
+                bid = 3;
+                break;
+            case 9:
+                bid = 4;
+                break;
+            case 10:
+                bid = 5;
+                break;
+        }
+
+        handleBid(bid);
     }
 }

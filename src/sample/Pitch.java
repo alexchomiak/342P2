@@ -40,6 +40,9 @@ public class Pitch {
     private Deck currentTrick;
 
 
+    //timeline
+    Timeline delay;
+
     //display elements
     private FlowPane cardStackPlaceholder;
     private StackPane cardStack;
@@ -53,16 +56,23 @@ public class Pitch {
     PitchScoreCalculator scoreCalculator;
 
     //gamestate managers
+    private boolean bidWindowOpen = false;
     private boolean roundInProgress = false;
+    private boolean roundEnded = false;
+    private boolean roundSummaryInProgress = false;
     private boolean trickInProgress = false;
     private boolean bettingInProgress = false;
     private int roundCount = 0;
     private Player startPlayer = null;
+    private Player currentPlayer = null;
     private boolean gameOver = false;
     private char currentTrumpSuit;
     private char currentLeadSuit;
     private int currentTrickNumber = 0;
     private int trickWinningIndex = 0;
+
+    private ArrayList<Integer> currentScores;
+    private ArrayList<Integer> currentBids;
 
     void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
     void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
@@ -73,11 +83,23 @@ public class Pitch {
     Deck getCurrentTrick(){return this.currentTrick;}
     Player getStartPlayer(){return this.startPlayer;}
     Player getPlayer(){return this.player;}
-
-
+    void setCurrentPlayer(Player p){this.currentPlayer = p;}
+    Player getCurrentPlayer(){return this.currentPlayer;}
+    void setRoundSummaryInProgress(boolean s){ this.roundSummaryInProgress = s;}
+    void setBidWindowOpen(boolean s) { this.bidWindowOpen = s;}
+    boolean getBidWindowOpen() {return this.bidWindowOpen;}
     BorderPane getLayout(){return this.layout;}
     StackPane getCardStack(){return this.cardStack;}
     Scoreboard getScoreboard(){return this.scoreboard;}
+
+
+    ArrayList<Integer> getCurrentScores() {return this.currentScores;}
+    ArrayList<Integer> getCurrentBids() {return this.currentBids;}
+
+    int getPlayerCount() {return this.playerCount;}
+
+
+
     Pitch(Stage window, int playerCount, int windowWidth, int windowHeight) {
         this.window = window;
         this.playerCount = playerCount;
@@ -91,11 +113,7 @@ public class Pitch {
 
         if( cardStack != null) {
 
-
-            if(roundInProgress == false) {
-                timeDelay(1000);
-            }
-
+            //timeDelay(500);
 
             gameField.clearDeck();
             cardStack.getChildren().clear();
@@ -106,18 +124,22 @@ public class Pitch {
 
 
     void startTrick(int num) {
-        resetGameField();
-
+        resetPlayers(false);
         currentTrick.clearDeck();
 
-        startPlayer.startTurn(true);
 
+        currentPlayer = startPlayer;
         trickInProgress = true;
 
         Pitch game = this;
         AnimationTimer trickThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
+
+                if(!currentPlayer.getTurnStarted()) {
+                    timeDelay(150);
+                    currentPlayer.startTurn(currentPlayer == startPlayer);
+                }
 
                 boolean allCompleted = true;
                 for(int i = 0; i < computerPlayers.size(); i++) {
@@ -126,20 +148,19 @@ public class Pitch {
                 allCompleted = allCompleted && player.getCompleted();
 
 
-                if(trickInProgress && allCompleted) {
-                    trickInProgress = false;
 
-                    player.reset();
-                    computerPlayers.forEach(player-> player.reset());
+
+                if(trickInProgress && allCompleted && currentPlayer.getTurnStarted()) {
+
+                    trickInProgress = false;
 
 
                     //calculate score
                     startPlayer = scoreCalculator.calculateTrickWinner(game);
-                    ArrayList<Card> wonCards = currentTrick.getCards();
-                    for(int i = 0; i < wonCards.size(); i++) {
-                        startPlayer.addWonCard(wonCards.get(i));
-                    }
 
+                    for(int i = 0 ; i < game.getCurrentTrick().getCards().size(); i++) {
+                        startPlayer.addWonCard(currentTrick.getCards().get(i));
+                    }
 
                     ArrayList<CardView> views = currentTrick.getCardViews();
                     //System.out.println(trickWinningIndex);
@@ -147,6 +168,11 @@ public class Pitch {
 
                     setPrompt(startPlayer.playerNumber);
                     trickList.addToList(views,trickWinningIndex, startPlayer.playerNumber);
+
+
+
+
+
 
 
                     this.stop();
@@ -167,17 +193,26 @@ public class Pitch {
 
 
 
-    void resetPlayers() {
+    void resetPlayers(boolean cleardeck) {
         Player iterator = startPlayer;
         for(int i = 0; i < playerCount; i++) {
             iterator.reset();
-            iterator.getHand().clearDeck();
+            if(cleardeck) iterator.getHand().clearDeck();
+            if(cleardeck) iterator.getTricks().clearDeck();
+            iterator = iterator.getNextPlayer();
+        }
+    }
+
+    void resetPlayerBids() {
+        Player iterator = getStartPlayer();
+        for(int i = 0; i < playerCount; i++) {
+            iterator.resetBids();
             iterator = iterator.getNextPlayer();
         }
     }
 
     void dealPlayers() {
-        resetPlayers();
+        resetPlayers(true);
         //initialize dealer for round
         PitchDealer Dealer = new PitchDealer();
 
@@ -194,10 +229,13 @@ public class Pitch {
     }
 
     void startRound() {
+        scoreboard.setBids(currentBids);
+        resetPlayerBids();
+        setPrompt(0);
+        scoreboard.setScores(this.currentScores);
         scoreboard.setTrumpSuit('E');
-        incrementRoundCounter();
+        scoreboard.setTurnPrompt(0);
         dealPlayers();
-
         bettingInProgress = true;
         startBetting();
 
@@ -205,6 +243,9 @@ public class Pitch {
 
 
         roundInProgress = true;
+
+
+        Pitch game = this;
         AnimationTimer roundThread = new AnimationTimer() {
 
             @Override
@@ -219,17 +260,28 @@ public class Pitch {
                     if(allPlayersBetted){
                         boolean allPassed = true;
 
+
                         Player iterator = startPlayer;
                         for(int i = 0; i < playerCount; i++) {
-                            if(iterator.getCurrentBid() != -1) allPassed = false;
+                            if(iterator.getCurrentBid() != 0) allPassed = false;
 
                             iterator = iterator.getNextPlayer();
                         }
 
                         if(allPassed) {
                             dealPlayers();
-                            startBetting();
+                            roundInProgress = false;
+                            this.stop();
                         } else {
+                            //set starting player, find max index of bid
+
+                            iterator = startPlayer;
+
+                            int maxBid = iterator.getCurrentBid();
+                            for(int i = 0; i < playerCount; i++) {
+                                if(iterator.getCurrentBid() > startPlayer.getCurrentBid()) startPlayer = iterator;
+                                iterator = iterator.getNextPlayer();
+                            }
                             bettingInProgress = false;
                         }
 
@@ -242,13 +294,15 @@ public class Pitch {
 
 
 
-                if(!trickInProgress){
-
+                if(!trickInProgress && !bettingInProgress && roundInProgress){
+                    bidWindowOpen = false;
 
                     //check if player hands empty to signify round over, if so calculate scores
                     if(startPlayer.getHand().getCards().size() == 0) {
                         roundInProgress = false;
 
+                        layout.setCenter(scoreCalculator.calculateRoundWinner(game));
+                        roundEnded = true;
 
                         this.stop();
                     }
@@ -257,7 +311,11 @@ public class Pitch {
                     if(startPlayer.getHand().getCards().size() > 0) {
 
                         //trick = new Timeline(new KeyFrame(Duration.ZERO, ae-> startTrick()), new KeyFrame(Duration.millis(1000),ae->resetGameField()));
+
                         currentTrickNumber++;
+                        player.getHand().setSelectable(false);
+                        resetGameField();
+
                         startTrick(currentTrickNumber);
                         //trick.play();
                     }
@@ -272,29 +330,34 @@ public class Pitch {
     void start() {
 
 
-
         scoreCalculator = new PitchScoreCalculator();
-         cardStackPlaceholder = new FlowPane();
+        cardStackPlaceholder = new FlowPane();
         gameField = new Deck(cardStackPlaceholder);
         currentTrick = new Deck(cardStackPlaceholder);
 
 
+        currentBids = new ArrayList<Integer>();
+        currentScores = new ArrayList<Integer>();
+        for(int i = 0; i < playerCount; i++){
+            currentScores.add(0);
+            currentBids.add(0);
+        }
 
 
-        cardStackPlaceholder.getChildrenUnmodifiable().addListener(new ListChangeListener<Node>() {
+        cardStackPlaceholder.getChildren().addListener(new ListChangeListener<Node>() {
             //listener that updates gameField stack in the middle of the screem
             @Override
             public void onChanged(ListChangeListener.Change<? extends Node> c) {
                 //update deck
                 cardStack = new StackPane();
                 for(int i = 0; i < gameField.getCardViews().size(); i++) {
-
                     //card selection
                     CardView card = gameField.getCardViews().get(i);
 
 
                     //creates rotatation offset effect of stack in the middle
                     if(i == gameField.cardViews.size() - 1) {
+
                         Random r = new Random();
                         double randomValue = ((i % 8) * 35) + (20 + ((20) * r.nextDouble()));
                         card.rotate(randomValue);
@@ -361,23 +424,31 @@ public class Pitch {
 
 
 
-
+        //set to round 1
+        roundCount++;
+        incrementRoundCounter();
 
         AnimationTimer gameThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(!roundInProgress && !gameOver) {
+
+                if(!roundSummaryInProgress && !roundInProgress && !gameOver) {
 
 
 
                     roundInProgress = true;
                     if(roundCount > 0) {
-                        System.out.println("round ended " +  Integer.toString(roundCount));
+                        //System.out.println("round ended " +  Integer.toString(roundCount));
                         //calculate score
                     }
-                    resetGameField();
-                    trickList.clear();
-                    roundCount++;
+                    if(roundEnded) {
+                        resetGameField();
+                        trickList.clear();
+                        roundCount++;
+                        incrementRoundCounter();
+                        roundEnded = false;
+                    }
+
                     startRound();
                 }
             }
@@ -442,20 +513,20 @@ public class Pitch {
         RoundCount.setText("Round: " + Integer.toString(roundCount));
     }
     void setPrompt(int playerWon) {
-        if(playerWon == -1) {
+        if(playerWon == 0) {
             Prompt.setText("");
             return;
         }
 
         if(playerWon == 1) {
-            Prompt.setText("You won the trick!");
+            Prompt.setText("You won the previous trick!");
         }
         else {
-            Prompt.setText("Player " + Integer.toString(playerWon) + " won the trick." );
+            Prompt.setText("Player " + Integer.toString(playerWon) + " won the previous trick." );
         }
     }
 
-    private void timeDelay(long t) {
+    public void timeDelay(long t) {
        try {
            Thread.sleep(t);
        } catch(InterruptedException e){}

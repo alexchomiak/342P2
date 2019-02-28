@@ -212,6 +212,11 @@ public class CardView {
     }
 
     void setCardIsSelectable(boolean s) {
+        if(s) {
+            cardRect.setOpacity(1.0);
+        } else {
+            cardRect.setOpacity(.5);
+        }
         this.cardIsSelectable = s;
     }
 

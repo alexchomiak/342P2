@@ -101,20 +101,28 @@ public class Player {
     Player getNextPlayer(){return this.nextPlayer;}
 
     void startNextTurn() {
-        if(nextPlayer.getCompleted() == true) return;
-        this.nextPlayer.startTurn(false);
+        if(nextPlayer.getCompleted() == true) {
+            return;
+        }
+        parent.setCurrentPlayer(getNextPlayer());
     }
 
     void giveCard(Card card) {
         hand.addCard(card);
     }
 
-    void reset() { turnCompleted = false; turnStarted = false; madeBid = false;}
+    void reset() { turnCompleted = false; turnStarted = false;}
+    void resetBids(){madeBid = false; currentBid = -1; parent.getCurrentBids().set(playerNumber - 1,-1);}
+
+    boolean getTurnStarted(){return turnStarted;}
     boolean getCompleted() { return turnCompleted;}
     boolean getBidded(){return madeBid;}
 
     void startTurn(boolean startingPlayer) {
-        if(turnStarted) return;
+        //parent.timeDelay(200);
+        parent.getScoreboard().setTurnPrompt(playerNumber);
+        turnStarted = true;
+
 
         this.startingPlayer = startingPlayer;
 
@@ -123,6 +131,7 @@ public class Player {
             hand.setSelectable(false);
             boolean validCardsFound = false;
             for(int i = 0; i < hand.getCards().size(); i++) {
+                //set cards that are valid to be used in turn
                 if(hand.getCards().get(i).getFace() == parent.getCurrentLeadSuit() || hand.getCards().get(i).getFace() == parent.getCurrentTrumpSuit()) {
                     hand.getCardViews().get(i).setCardIsSelectable(true);
                     validCardsFound = true;
@@ -138,7 +147,7 @@ public class Player {
 
         if(turnCompleted) return;
         hand.setSelectedCard(null);
-        turnStarted = true;
+
     }
 
 
@@ -146,56 +155,66 @@ public class Player {
         wonTricks.addCard(c);
     }
 
+
+    protected Deck getTricks() {return this.wonTricks;}
+
     protected int getCurrentBid(){return this.currentBid;}
 
     protected void handleBid(int bid) {
         madeBid = true;
         currentBid = bid;
+
+        parent.getCurrentBids().set(playerNumber - 1,bid);
+        parent.getScoreboard().setBids(parent.getCurrentBids());
+
         if(!nextPlayer.getBidded()) nextPlayer.makeBid();
-        if(playerNumber == 1) {
+        if(playerNumber == 1 && currentBid != 0) {
             parent.getLayout().setCenter(parent.getCardStack());
         }
     }
 
     void makeBid() {
 
-        FlowPane bidMenu = new FlowPane(Orientation.VERTICAL);
-        Label Prompt = new Label("Make your bid for the Round!");
-        bidMenu.setVgap(10);
-        Prompt.setTextFill(textColor);
-        bidMenu.getChildren().add(Prompt);
+        if(!parent.getBidWindowOpen()) {
+            parent.setBidWindowOpen(true);
+            FlowPane bidMenu = new FlowPane(Orientation.VERTICAL);
+            Label Prompt = new Label("Make your bid for the Round!");
+            bidMenu.setVgap(10);
+            Prompt.setTextFill(textColor);
+            bidMenu.getChildren().add(Prompt);
 
-        HBox bids = new HBox();
-        Button bidTwo = new Button("2");
-        Button bidThree = new Button("3");
-        Button bidFour = new Button("4");
-        Button bidSmudge = new Button("Smudge");
+            HBox bids = new HBox();
+            Button bidTwo = new Button("2");
+            Button bidThree = new Button("3");
+            Button bidFour = new Button("4");
+            Button bidSmudge = new Button("Smudge");
 
-        bids.getChildren().addAll(bidTwo,bidThree,bidFour,bidSmudge);
-        bids.setSpacing(5);
-        bids.setAlignment(Pos.CENTER);
+            bids.getChildren().addAll(bidTwo,bidThree,bidFour,bidSmudge);
+            bids.setSpacing(5);
+            bids.setAlignment(Pos.CENTER);
 
-        bidMenu.getChildren().add(bids);
+            bidMenu.getChildren().add(bids);
 
-        HBox passContainer = new HBox();
-        Button pass = new Button("Pass");
-        passContainer.getChildren().add(pass);
-        passContainer.setAlignment(Pos.CENTER);
+            HBox passContainer = new HBox();
+            Button pass = new Button("Pass");
+            passContainer.getChildren().add(pass);
+            passContainer.setAlignment(Pos.CENTER);
 
-        bidMenu.getChildren().add(passContainer);
-        bidMenu.setAlignment(Pos.CENTER);
-        bidMenu.setStyle(sideBarStyle);
-
-
-        parent.getLayout().setCenter(bidMenu);
+            bidMenu.getChildren().add(passContainer);
+            bidMenu.setAlignment(Pos.CENTER);
+            bidMenu.setStyle(sideBarStyle);
 
 
-        //add button handlers
-        bidTwo.setOnAction(e -> handleBid(2));
-        bidThree.setOnAction(e -> handleBid(3));
-        bidFour.setOnAction(e-> handleBid(4));
-        bidSmudge.setOnAction(e->handleBid(5));
-        pass.setOnAction(e->handleBid(-1));
+            parent.getLayout().setCenter(bidMenu);
+
+
+            //add button handlers
+            bidTwo.setOnAction(e -> handleBid(2));
+            bidThree.setOnAction(e -> handleBid(3));
+            bidFour.setOnAction(e-> handleBid(4));
+            bidSmudge.setOnAction(e->handleBid(5));
+            pass.setOnAction(e->handleBid(0));
+        }
 
 
 

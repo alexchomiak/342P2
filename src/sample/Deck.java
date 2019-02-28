@@ -145,7 +145,6 @@ public class Deck {
         }
         cardViews.clear();
         cards.clear();
-        System.out.println(cardViews.size());
     }
 
 }
