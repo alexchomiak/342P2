@@ -49,7 +49,7 @@ public class Scoreboard {
         displayPane.getChildren().add(turnPrompt);
 
 
-        trumpPrompt = new Label("Current Trump Suit");
+        trumpPrompt = new Label("Round Trump Suit");
         trumpPrompt.setTextFill(textColor);
         trumpPrompt.setStyle("-fx-font: 18 arial");
 
@@ -65,7 +65,7 @@ public class Scoreboard {
         displayPane.getChildren().addAll(Trump);
 
 
-        Rectangle placeholder = new Rectangle(1,50);
+        Rectangle placeholder = new Rectangle(155,50);
         placeholder.setOpacity(0);
         displayPane.getChildren().add(placeholder);
 
@@ -102,7 +102,7 @@ public class Scoreboard {
 
         displayPane.setAlignment(Pos.CENTER);
 
-        displayPane.setStyle(sideBarStyle);
+        displayPane.setStyle(leftSideBarStyle);
         ArrayList<Integer> initial = new ArrayList<Integer>();
         initial.add(0);
         initial.add(0);

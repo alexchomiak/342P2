@@ -132,6 +132,13 @@ public class Pitch {
         trickInProgress = true;
 
         Pitch game = this;
+
+
+        //trick handling loop
+        //starts the designated start players turn
+        //and watches for all turns to be completed,
+        //once all turns are completed the appropriate logic will be executed
+        //to handle the user and computer choices
         AnimationTimer trickThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -246,6 +253,12 @@ public class Pitch {
 
 
         Pitch game = this;
+
+
+        //start round state handling loop
+        //watches for changes in round state,
+        //if a trick is finished, it will start a new trick
+        //if the player hands are not empty
         AnimationTimer roundThread = new AnimationTimer() {
 
             @Override
@@ -415,7 +428,7 @@ public class Pitch {
 
 
         player.display().setHgap(5);
-        player.display().setStyle(sideBarStyle);
+        //player.display().setStyle(sideBarStyle);
         layout.setBottom(player.display());
 
         //layout.setAlignment(scoreboard.View(),Pos.CENTER);
@@ -428,6 +441,11 @@ public class Pitch {
         roundCount++;
         incrementRoundCounter();
 
+
+
+        //start game state handling loop,
+        //watches for round state change, and will start a new round if round
+        //is finished
         AnimationTimer gameThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -488,7 +506,7 @@ public class Pitch {
 
         topBar.getChildren().addAll(Title,RoundCount,Prompt);
 
-        topBar.setStyle(sideBarStyle);
+        //topBar.setStyle(sideBarStyle);
         layout.setTop(topBar);
 
 

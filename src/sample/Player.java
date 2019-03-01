@@ -202,7 +202,7 @@ public class Player {
 
             bidMenu.getChildren().add(passContainer);
             bidMenu.setAlignment(Pos.CENTER);
-            bidMenu.setStyle(sideBarStyle);
+            //bidMenu.setStyle(sideBarStyle);
 
 
             parent.getLayout().setCenter(bidMenu);

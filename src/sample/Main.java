@@ -7,7 +7,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import static sample.PitchConstants.*;
 import java.util.Random;
@@ -88,12 +90,53 @@ public class Main extends Application  {
 
         //create animation timer for rotating card on menu screen
         AnimationTimer timer = new AnimationTimer() {
-            int rotator = 0;
+            int scalor = 0;
+            int offset = 1;
+            double rotator = 0;
             @Override
             public void handle(long now) {
-                rotator += 1;
-                displayCard.rotate(rotator);
-                if(rotator == 360) rotator = 0;
+                scalor += 6;
+                //rotator += .5;
+                //displayCard.rotate(rotator);
+
+                //if(rotator == 360) rotator = 0;
+
+
+
+
+
+                if(scalor < 180) {
+                    displayCard.View().setScaleX( (180.0 - (double)scalor)/180.0);
+
+                }
+                else {
+                    double j = scalor - 181;
+                    displayCard.View().setScaleX(j/180.0);
+                }
+
+
+
+
+
+
+                if(scalor == 180 && offset % 2 == 0) {
+                   displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/AS.png")));
+                }
+
+                if(scalor == 180 && offset % 2 == 1){
+                    displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/red_back.png")));
+                }
+
+                if(scalor == 360) {
+                    offset++;
+                    scalor = 0;
+
+                }
+
+
+                if(offset == 10) {
+                    offset = 0;
+                }
             }
         };
 
@@ -145,7 +188,7 @@ public class Main extends Application  {
         //exit
         exitButton.setOnAction(e -> exitProgram());
 
-        layout.setStyle(sideBarStyle);
+        layout.setStyle(titleStyle);
 
         mainMenu = new Scene(layout,windowWidth,windowHeight);
     }

@@ -143,6 +143,9 @@ public class CardView {
                 case 13:
                     imgSrc = "/Assets/PlayingCards/" + "K" + face + ".png";
                     break;
+                case 50:
+                    imgSrc = "/Assets/PlayingCards/red_back.png";
+                    break;
             }
         }
 
@@ -230,6 +233,7 @@ public class CardView {
     }
 
     double getScale(){return this.scaleFactor;}
+
 
     void highlight(Color color){
         cardRect.setStrokeWidth(2);

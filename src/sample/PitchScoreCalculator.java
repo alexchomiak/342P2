@@ -99,12 +99,13 @@ public class PitchScoreCalculator {
 
     VBox calculateRoundWinner(Pitch game) {
         game.setRoundSummaryInProgress(true);
+        game.getScoreboard().setTurnPrompt(0);
 
         char trump = game.getCurrentTrumpSuit();
 
         VBox roundSummary = new VBox(10);
         roundSummary.setAlignment(Pos.CENTER);
-        roundSummary.setStyle(sideBarStyle);
+        roundSummary.setStyle(roundSummaryStyle);
 
         ArrayList< ArrayList<Card> > playerTricks = new ArrayList< ArrayList<Card> >();
 
@@ -173,11 +174,15 @@ public class PitchScoreCalculator {
 
             }
 
+            if(pointsScored == maxPointsScored) {
+                playerGamePointsWinner = -1;
+            }
 
             if(pointsScored > maxPointsScored) {
                 maxPointsScored = pointsScored;
                 playerGamePointsWinner = i;
             }
+
 
             if((currentTricks.size() == game.getPlayerCount() * 6) && playerJackTrumpWinner == i) {
                 playerSmudgeWinner = i;
@@ -211,12 +216,13 @@ public class PitchScoreCalculator {
 
 
         //score summary label
-        Label scoreSummary = new Label("Score Summary");
+        Label scoreSummary = new Label("Round Summary");
         scoreSummary.setTextFill(textColor);
         scoreSummary.setStyle("-fx-font: 18px arial");
 
         //Game points winnner
-        Label gamePointsWinner = new Label("Game Points Winner (+1): Player " + Integer.toString((playerGamePointsWinner + 1)));
+        Label gamePointsWinner = new Label("Highest Game Points Winner (+1): Player " + Integer.toString((playerGamePointsWinner + 1)));
+        if(playerGamePointsWinner == -1) gamePointsWinner.setText("No player won Highest Game Points (Tie)");
         gamePointsWinner.setTextFill(getColor(playerGamePointsWinner));
 
         //High trump winner
@@ -242,7 +248,7 @@ public class PitchScoreCalculator {
 
 
         //player summary label
-        Label playerSummary = new Label("Player Summary");
+        Label playerSummary = new Label("Score Summary");
         playerSummary.setTextFill(textColor);
         playerSummary.setStyle("-fx-font: 18px arial;");
 

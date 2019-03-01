@@ -34,7 +34,7 @@ public class TrickList {
 
         displayPane = new FlowPane(Orientation.VERTICAL);
         displayPane.setPadding(new Insets(2,2,2,6));
-        displayPane.setStyle(sideBarStyle);
+        displayPane.setStyle(rightSideBarStyle);
 
         displayPane.setVgap(10);
         tricks = new ArrayList<HBox>();
@@ -43,7 +43,7 @@ public class TrickList {
         PromptContainer.getChildren().addAll(Prompt,PromptDescription);
         displayPane.getChildren().add(PromptContainer);
 
-        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 8,5);
+        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 20 ,5);
         placeholder.setOpacity(0.0);
         displayPane.getChildren().add(placeholder);
 
