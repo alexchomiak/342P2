@@ -34,7 +34,9 @@ public class Main extends Application  {
     @Override
     public void start(Stage primaryStage) throws Exception{
        window = primaryStage;
+
         initializeMenuScene();
+
 
         Button fourPlayers = new Button("4 Players");
 
@@ -42,7 +44,10 @@ public class Main extends Application  {
        //set title and show window
        window.setTitle("Pitch Game");
        window.setScene(mainMenu);
+
        window.show();
+        primaryStage.setMinWidth(primaryStage.getWidth());
+        primaryStage.setMinHeight(primaryStage.getHeight());
     }
 
 
@@ -95,7 +100,7 @@ public class Main extends Application  {
             double rotator = 0;
             @Override
             public void handle(long now) {
-                scalor += 6;
+                scalor += 5;
                 //rotator += .5;
                 //displayCard.rotate(rotator);
 
@@ -127,7 +132,7 @@ public class Main extends Application  {
                     displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/red_back.png")));
                 }
 
-                if(scalor == 360) {
+                if(scalor >= 360) {
                     offset++;
                     scalor = 0;
 

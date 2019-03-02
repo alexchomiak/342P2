@@ -41,6 +41,7 @@ public class Deck {
             cardView.setScale(scaleFactor);
             cardViews.add(cardView);
             if(displayPane != null) displayPane.getChildren().add(cardView.View());
+            reRender();
         }
 
 
@@ -49,6 +50,7 @@ public class Deck {
     //remove card from deck
     boolean removeCard(Card card) {
        if(moveCardTo(destinationGroup, card)) {
+           reRender();
            return true;
        }
        else {
@@ -76,7 +78,7 @@ public class Deck {
                     if(displayPane != null) displayPane.getChildren().remove(cardViews.get(i).View());
                     cardViews.remove(i);
                 }
-
+                reRender();
                 return true;
             }
         }
@@ -147,4 +149,61 @@ public class Deck {
         cards.clear();
     }
 
+    void reRender() {
+        int angularOffset = 15;
+        int yOffset = 50;
+
+        for(int i = 0; i < cardViews.size(); i++) {
+
+            //cardViews.get(i).rotate(30);
+
+            cardViews.get(i).setY(0);
+
+            int size = cardViews.size() - 1;
+            int offset;
+            if(size % 2 == 1) {
+                if(i <= size/2) {
+                    if(i == size/2) {
+                        cardViews.get(i).rotate(-angularOffset/2);
+                        cardViews.get(i).setY(0);
+                    }
+                    else {
+                        offset = (size/2) - i;
+                        cardViews.get(i).rotate(-1*((offset * angularOffset) + angularOffset/2));
+                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                    }
+                }
+                else {
+                    if(i == size/2 + 1) {
+                        cardViews.get(i).rotate(angularOffset/2);
+                        cardViews.get(i).setY(0);
+                    }
+                    else {
+                        offset = i - ((size/2) + 1);
+                        cardViews.get(i).rotate((offset * angularOffset) + angularOffset/2);
+                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+
+                    }
+                }
+            }
+            else {
+                if(i == size / 2) {
+                    cardViews.get(i).rotate(0);
+                    cardViews.get(i).setY(angularOffset / 2);
+                }
+                else {
+                    if( i < size/2) {
+                        offset = size/2 - i;
+                        cardViews.get(i).rotate(offset * -angularOffset);
+                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                    }
+                    else{
+                        offset = i - size/2;
+                        cardViews.get(i).rotate(offset * angularOffset);
+                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                    }
+                }
+            }
+        }
+    }
 }

@@ -161,6 +161,7 @@ public class Player {
     protected int getCurrentBid(){return this.currentBid;}
 
     protected void handleBid(int bid) {
+
         madeBid = true;
         currentBid = bid;
 
@@ -226,6 +227,7 @@ public class Player {
     Deck getHand(){ return this.hand; }
 
     FlowPane display() {
+
         return this.handDisplay;
     }
 

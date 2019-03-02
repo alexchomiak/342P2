@@ -20,7 +20,7 @@ import java.util.Random;
 
 import static sample.PitchConstants.*;
 
-public class Pitch {
+public class Pitch implements DealerType{
     private Stage window;
     private Scene gameWindow;
     private BorderPane layout;
@@ -38,13 +38,14 @@ public class Pitch {
     //game elements
     private Deck gameField;
     private Deck currentTrick;
+    private Deck playedCards;
 
 
     //timeline
     Timeline delay;
 
     //display elements
-    private FlowPane cardStackPlaceholder;
+    private FlowPane placeholder;
     private StackPane cardStack;
     private Scoreboard scoreboard;
     private TrickList trickList;
@@ -70,6 +71,7 @@ public class Pitch {
     private char currentLeadSuit;
     private int currentTrickNumber = 0;
     private int trickWinningIndex = 0;
+    private PitchDealer pitchDealer;
 
     private ArrayList<Integer> currentScores;
     private ArrayList<Integer> currentBids;
@@ -98,6 +100,9 @@ public class Pitch {
 
     int getPlayerCount() {return this.playerCount;}
 
+    public PitchDealer createDealer(){
+        return new PitchDealer();
+    }
 
 
     Pitch(Stage window, int playerCount, int windowWidth, int windowHeight) {
@@ -108,16 +113,10 @@ public class Pitch {
     }
 
     void resetGameField() {
-
-
-
         if( cardStack != null) {
-
-            //timeDelay(500);
-
             gameField.clearDeck();
             cardStack.getChildren().clear();
-            cardStackPlaceholder.getChildren().clear();
+            placeholder.getChildren().clear();
         }
     }
 
@@ -219,16 +218,27 @@ public class Pitch {
     }
 
     void dealPlayers() {
+        if(pitchDealer.getDeck().getCards().size() < (playerCount * 6)) {
+            System.out.println("resetting " + Integer.toString(pitchDealer.getDeck().getCards().size()) + " Round: " + Integer.toString(roundCount));
+
+            pitchDealer.resetDeck();
+
+        }
+
+
         resetPlayers(true);
-        //initialize dealer for round
-        PitchDealer Dealer = new PitchDealer();
+
+
+
+
 
         //give all players their cards
         Player iterator = startPlayer;
         while(iterator.getHand().getCards().size() == 0) {
 
-            ArrayList<Card> dealtHand = Dealer.dealHand();
+            ArrayList<Card> dealtHand = pitchDealer.dealHand();
             for(int i = 0; i < dealtHand.size(); i++) {
+
                 iterator.giveCard(dealtHand.get(i));
             }
             iterator = iterator.getNextPlayer();
@@ -236,6 +246,7 @@ public class Pitch {
     }
 
     void startRound() {
+        startPlayer = player;
         scoreboard.setBids(currentBids);
         resetPlayerBids();
         setPrompt(0);
@@ -282,7 +293,6 @@ public class Pitch {
                         }
 
                         if(allPassed) {
-                            dealPlayers();
                             roundInProgress = false;
                             this.stop();
                         } else {
@@ -323,14 +333,12 @@ public class Pitch {
                     //then start the next trick
                     if(startPlayer.getHand().getCards().size() > 0) {
 
-                        //trick = new Timeline(new KeyFrame(Duration.ZERO, ae-> startTrick()), new KeyFrame(Duration.millis(1000),ae->resetGameField()));
 
                         currentTrickNumber++;
                         player.getHand().setSelectable(false);
                         resetGameField();
 
                         startTrick(currentTrickNumber);
-                        //trick.play();
                     }
                 }
 
@@ -342,40 +350,35 @@ public class Pitch {
     }
     void start() {
 
-
+        pitchDealer = createDealer();
         scoreCalculator = new PitchScoreCalculator();
-        cardStackPlaceholder = new FlowPane();
-        gameField = new Deck(cardStackPlaceholder);
-        currentTrick = new Deck(cardStackPlaceholder);
+
+        //placeholder flowpane for Deck objects that interact with gui
+        placeholder = new FlowPane();
+        gameField = new Deck(placeholder);
+        currentTrick = new Deck(placeholder);
+        playedCards = new Deck(null);
 
 
         currentBids = new ArrayList<Integer>();
         currentScores = new ArrayList<Integer>();
         for(int i = 0; i < playerCount; i++){
             currentScores.add(0);
-            currentBids.add(0);
+            currentBids.add(-1);
         }
 
 
-        cardStackPlaceholder.getChildren().addListener(new ListChangeListener<Node>() {
+        placeholder.getChildren().addListener(new ListChangeListener<Node>() {
             //listener that updates gameField stack in the middle of the screem
             @Override
             public void onChanged(ListChangeListener.Change<? extends Node> c) {
                 //update deck
                 cardStack = new StackPane();
                 for(int i = 0; i < gameField.getCardViews().size(); i++) {
-                    //card selection
-                    CardView card = gameField.getCardViews().get(i);
+                    //intialize card to be added to stack
+                    CardView card = new CardView(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
 
-
-                    //creates rotatation offset effect of stack in the middle
-                    if(i == gameField.cardViews.size() - 1) {
-
-                        Random r = new Random();
-                        double randomValue = ((i % 8) * 35) + (20 + ((20) * r.nextDouble()));
-                        card.rotate(randomValue);
-                    }
-
+                    card.rotate(45 * i);
 
                     //push new rotated stack
                     cardStack.getChildren().add(card.View());
@@ -413,7 +416,7 @@ public class Pitch {
 
 
 
-
+        //initialize game scene and set window to game window
         intializeGameScene();
         window.setScene(gameWindow);
 
@@ -427,7 +430,7 @@ public class Pitch {
         layout.setRight(trickList.View());
 
 
-        player.display().setHgap(5);
+        player.display().setHgap(-30);
         //player.display().setStyle(sideBarStyle);
         layout.setBottom(player.display());
 
@@ -446,6 +449,8 @@ public class Pitch {
         //start game state handling loop,
         //watches for round state change, and will start a new round if round
         //is finished
+
+        Random rand = new Random();
         AnimationTimer gameThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -511,7 +516,8 @@ public class Pitch {
 
 
 
-        gameWindow = new Scene(layout,windowWidth,windowHeight);
+
+        gameWindow = new Scene(layout,window.getWidth(),window.getHeight());
 
 
 

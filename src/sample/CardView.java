@@ -91,7 +91,7 @@ public class CardView {
 
 
         if (overCard) {
-            cardRect.setStroke(Color.GREENYELLOW);
+            cardRect.setStroke(Color.ORANGERED);
             cardRect.setStrokeWidth(2);
 
             if (this.x > -1 && this.y > -1) {
@@ -213,6 +213,8 @@ public class CardView {
     void rotate(double deg) {
         this.cardRect.setRotate(deg);
     }
+
+
 
     void setCardIsSelectable(boolean s) {
         if(s) {

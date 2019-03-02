@@ -3,20 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/AIPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/AIPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/CardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Deck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchScoreCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchScoreCalculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchDealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchDealer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AIPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Pitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/PitchConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PitchConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/PitchScoreCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PitchScoreCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/PitchDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PitchDealer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Scoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Scoreboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/TrickList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TrickList.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,17 +83,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1247">
-              <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
+            <state relative-caret-position="206">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3434#3435#0" expanded="true" />
                 <element signature="e#3468#3469#0" expanded="true" />
-                <element signature="e#6994#6995#0" expanded="true" />
-                <element signature="e#7033#7034#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,13 +98,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Pitch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="508" column="10" selection-start-line="508" selection-start-column="10" selection-end-line="508" selection-end-column="10" />
+            <state relative-caret-position="-1647">
+              <caret line="257" selection-start-line="257" selection-end-line="257" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15358#15359#0" expanded="true" />
-                <element signature="e#15434#15435#0" expanded="true" />
+                <element signature="e#3279#3280#0" expanded="true" />
+                <element signature="e#3319#3320#0" expanded="true" />
+                <element signature="e#7536#10212#0" expanded="true" />
+                <element signature="e#10211#10212#0" expanded="true" />
+                <element signature="e#13413#14178#0" expanded="true" />
+                <element signature="e#14177#14178#0" expanded="true" />
+                <element signature="e#15247#15248#0" expanded="true" />
+                <element signature="e#15323#15324#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/animation/AnimationTimer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -111,12 +127,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2163">
-              <caret line="147" selection-start-line="147" selection-end-line="147" />
+            <state relative-caret-position="-426">
+              <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Dealer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DealerType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/AIPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3522#3523#0" expanded="true" />
-                <element signature="e#3557#3558#0" expanded="true" />
+                <element signature="e#1634#1643#0" expanded="true" />
+                <element signature="e#2115#2124#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +168,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/PitchScoreCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
+            <state relative-caret-position="1605">
               <caret line="107" column="47" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -135,51 +178,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/TrickList.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/PitchDealer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="45" column="94" selection-start-line="45" selection-start-column="94" selection-end-line="45" selection-end-column="94" />
+            <state relative-caret-position="592">
+              <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#995#1001#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Scoreboard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/CardView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="146" column="20" selection-start-line="146" selection-start-column="20" selection-end-line="146" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/yellow_back.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/PitchConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="193" selection-start-line="19" selection-start-column="193" selection-end-line="19" selection-end-column="193" />
             </state>
           </provider>
         </entry>
@@ -187,11 +193,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="190" column="29" selection-start-line="190" selection-start-column="29" selection-end-line="190" selection-end-column="29" />
+            <state relative-caret-position="600">
+              <caret line="134" column="27" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5046#5047#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -209,14 +214,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setX</find>
-      <find>setNextPlayer</find>
-      <find>st</find>
-      <find>window.close</find>
-      <find>startTurn</find>
       <find>void make</find>
       <find>parent</find>
-      <find>system.o</find>
       <find>clear</find>
       <find>system.out</find>
       <find>s</find>
@@ -239,6 +238,12 @@
       <find>system.</find>
       <find>resetP</find>
       <find>setStyle</find>
+      <find>setRotat</find>
+      <find>player.di</find>
+      <find>Dealer</find>
+      <find>getCurrentBids</find>
+      <find>system.o</find>
+      <find>Sy</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -268,23 +273,23 @@
         <option value="$PROJECT_DIR$/src/sample/CardGroup.java" />
         <option value="$PROJECT_DIR$/src/sample/Dealer.java" />
         <option value="$PROJECT_DIR$/src/sample/DealerType.java" />
-        <option value="$PROJECT_DIR$/src/sample/PitchDealer.java" />
-        <option value="$PROJECT_DIR$/src/sample/AIPlayer.java" />
-        <option value="$PROJECT_DIR$/src/sample/Deck.java" />
-        <option value="$PROJECT_DIR$/src/sample/CardView.java" />
-        <option value="$PROJECT_DIR$/src/sample/Pitch.java" />
-        <option value="$PROJECT_DIR$/src/sample/Player.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/PitchScoreCalculator.java" />
-        <option value="$PROJECT_DIR$/src/sample/PitchConstants.java" />
         <option value="$PROJECT_DIR$/src/sample/Scoreboard.java" />
         <option value="$PROJECT_DIR$/src/sample/TrickList.java" />
+        <option value="$PROJECT_DIR$/src/sample/PitchConstants.java" />
+        <option value="$PROJECT_DIR$/src/sample/Deck.java" />
+        <option value="$PROJECT_DIR$/src/sample/Player.java" />
+        <option value="$PROJECT_DIR$/src/sample/CardView.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/PitchDealer.java" />
+        <option value="$PROJECT_DIR$/src/sample/Pitch.java" />
+        <option value="$PROJECT_DIR$/src/sample/AIPlayer.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="12" />
+    <option name="x" value="125" />
     <option name="y" value="23" />
     <option name="width" value="1612" />
     <option name="height" value="981" />
@@ -298,7 +303,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,12 +319,26 @@
               <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Assets" type="462c0819:PsiDirectoryNode" />
+              <item name="Suits" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -333,7 +351,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551473080256" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551569020468" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -450,10 +468,10 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="23" width="1612" height="981" extended-state="0" />
+    <frame x="125" y="23" width="1612" height="981" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16050956" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16242038" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -462,8 +480,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32908162" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19347581" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" x="1682" y="-957" width="1420" height="568" id="Run" order="2" type="FLOATING" visible="true" weight="0.25510204" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24971879" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -473,7 +491,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32733408" />
+      <window_info anchor="bottom" id="Messages" order="13" type="SLIDING" weight="0.22653061" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -537,12 +555,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/JC.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/AC.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/PlayerHand.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -581,49 +593,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/AIPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets/Suits/H.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets/Suits/C.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Dealer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PitchDealer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DealerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/honor_diamond.png">
       <provider selected="true" editor-type-id="images" />
@@ -691,59 +665,33 @@
     <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/yellow_back.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="146" column="20" selection-start-line="146" selection-start-column="20" selection-end-line="146" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Pitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="508" column="10" selection-start-line="508" selection-start-column="10" selection-end-line="508" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15358#15359#0" expanded="true" />
-            <element signature="e#15434#15435#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="190" column="29" selection-start-line="190" selection-start-column="29" selection-end-line="190" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5046#5047#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PitchScoreCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="107" column="47" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/PitchConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="193" selection-start-line="19" selection-start-column="193" selection-end-line="19" selection-end-column="193" />
+        <state relative-caret-position="150">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/TrickList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="432" selection-start-line="432" selection-end-line="432" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Scoreboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
+        <state relative-caret-position="-1512">
           <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -751,38 +699,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/TrickList.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/CardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="45" column="94" selection-start-line="45" selection-start-column="94" selection-end-line="45" selection-end-column="94" />
+        <state relative-caret-position="49">
+          <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="145" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Deck.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2163">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PitchScoreCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="107" column="47" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3522#3523#0" expanded="true" />
-            <element signature="e#3557#3558#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Dealer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DealerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1247">
-          <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
+        <state relative-caret-position="206">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="e#3468#3469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/animation/AnimationTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-426">
+          <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="134" column="27" selection-start-line="134" selection-start-column="27" selection-end-line="134" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3434#3435#0" expanded="true" />
-            <element signature="e#3468#3469#0" expanded="true" />
-            <element signature="e#6994#6995#0" expanded="true" />
-            <element signature="e#7033#7034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PitchDealer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#995#1001#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Pitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1647">
+          <caret line="257" selection-start-line="257" selection-end-line="257" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3279#3280#0" expanded="true" />
+            <element signature="e#3319#3320#0" expanded="true" />
+            <element signature="e#7536#10212#0" expanded="true" />
+            <element signature="e#10211#10212#0" expanded="true" />
+            <element signature="e#13413#14178#0" expanded="true" />
+            <element signature="e#14177#14178#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15323#15324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/AIPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1634#1643#0" expanded="true" />
+            <element signature="e#2115#2124#0" expanded="true" />
           </folding>
         </state>
       </provider>

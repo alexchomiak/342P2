@@ -14,6 +14,7 @@ public class PitchDealer implements Dealer {
 
     void initializeDeck() {
         //add all cards to deck
+
         for(int i = 0; i < 4; i++) {
             for(int j = 1; j < 14; j++) {
                 char face;
@@ -47,7 +48,7 @@ public class PitchDealer implements Dealer {
             boolean validCardChosen = false;
             while(!validCardChosen) {
                 char face;
-                switch( rand.nextInt() % 4 ) {
+                switch( rand.nextInt(4)) {
                     case 0: face = 'C'; break;
                     case 1: face = 'D'; break;
                     case 2: face = 'H'; break;
@@ -55,7 +56,7 @@ public class PitchDealer implements Dealer {
                     default: face = 'C'; break;
                 }
 
-                int rank = rand.nextInt() % deck.getCards().size();
+                int rank = rand.nextInt(14);
 
                 addition = new Card(rank,face);
 
@@ -68,4 +69,6 @@ public class PitchDealer implements Dealer {
         }
         return returnHand;
     }
+
+    public Deck getDeck() {return this.deck;}
 }
