@@ -1,17 +1,26 @@
 package TestSuite;
 
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.control.Label;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sample.Card;
-import sample.Deck;
-import sample.Pitch;
-import sample.Player;
+import game.Card;
+import game.Deck;
+import game.Pitch;
+import game.Player;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
     Player tester;
     Pitch testGame;
+
+    @BeforeAll
+    static void initializeTest() {
+        //initialize jfxpanel to allow testing of JavaFX elements without opening a window
+        JFXPanel jfxPanel = new JFXPanel();
+    }
 
     @BeforeEach
     void initPlayer() {
