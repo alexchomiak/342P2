@@ -300,12 +300,28 @@ public class PitchScoreCalculator {
 
         }
 
-        //Next Round button
+        //check winners
+        boolean playersWon = false;
+        for(int i = 0; i < game.getCurrentScores().size(); i++) {
+            if(game.getCurrentScores().get(i) >= scoreLimit) {
+                playersWon = true;
+            }
+        }
+        //Next Round/EndGame prompt button
+        String promptText = "Next Round";
+        if(playersWon) promptText = "End Game (Winner Found)";
+        Button nextRound = new Button(promptText);
 
-        Button nextRound = new Button("Next Round");
-        nextRound.setOnAction( e -> {
-            game.setRoundSummaryInProgress(false);
-        });
+        if(!playersWon) {
+            nextRound.setOnAction( e -> {
+                game.setRoundSummaryInProgress(false);
+            });
+        }
+        else {
+            nextRound.setOnAction( e -> {
+                game.end();
+            });
+        }
 
 
         roundSummary.getChildren().add(nextRound);

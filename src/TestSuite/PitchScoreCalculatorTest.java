@@ -15,10 +15,17 @@ class PitchScoreCalculatorTest {
     }
 
     @Test
-    void calculateTrickWinner() {
+    void calculateTrickWinner4Players() {
+    }
+    @Test
+    void calculateTrickWinner3Players() {
+    }
+    @Test
+    void calculateTrickWinner2Players() {
     }
 
     @Test
     void calculateRoundScore() {
     }
+
 }

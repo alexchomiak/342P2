@@ -6,6 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -70,6 +71,11 @@ public class Pitch implements DealerType{
 
     private ArrayList<Integer> currentScores;
     private ArrayList<Integer> currentBids;
+
+    private  AnimationTimer gameThread;
+    private AnimationTimer roundThread;
+    private AnimationTimer trickThread;
+
 
     public void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
     public  void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
@@ -209,7 +215,7 @@ public class Pitch implements DealerType{
         //and watches for all turns to be completed,
         //once all turns are completed the appropriate logic will be executed
         //to handle the user and computer choices
-        AnimationTimer trickThread = new AnimationTimer() {
+        trickThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
 
@@ -342,7 +348,7 @@ public class Pitch implements DealerType{
         //watches for changes in round state,
         //if a trick is finished, it will start a new trick
         //if the player hands are not empty
-        AnimationTimer roundThread = new AnimationTimer() {
+        roundThread = new AnimationTimer() {
 
             @Override
             public void handle(long now) {
@@ -460,7 +466,7 @@ public class Pitch implements DealerType{
 
 
 
-        AnimationTimer gameThread = new AnimationTimer() {
+        gameThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
 
@@ -499,7 +505,7 @@ public class Pitch implements DealerType{
         */
     }
 
-    void intializeGameScene() {
+    private void intializeGameScene() {
         layout = new BorderPane();
 
 
@@ -525,7 +531,7 @@ public class Pitch implements DealerType{
 
 
         gameWindow = new Scene(layout,window.getWidth(),window.getHeight());
-
+        gameWindow.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
 
 
@@ -539,11 +545,65 @@ public class Pitch implements DealerType{
     }
 
 
+    public void end() {
+        //End game Scene
+        if(gameThread != null) gameThread.stop();
+        if(roundThread != null) roundThread.stop();
+        if(trickThread != null) trickThread.stop();
 
-    void incrementRoundCounter() {
+
+        VBox end = new VBox(10);
+
+        //Calculate winners
+        ArrayList<Integer> winningPlayerIndexes = new ArrayList<Integer>();
+        int maxScore = 0;
+        for(int i = 0; i < playerCount; i++) {
+            if(currentScores.get(i) > maxScore) {
+                winningPlayerIndexes.clear();
+                maxScore = currentScores.get(i);
+            }
+
+            if(currentScores.get(i) == maxScore) {
+                winningPlayerIndexes.add(i);
+            }
+        }
+
+        Label farewell = new Label("Thank you for playing Pitch!");
+        farewell.setStyle("-fx-font: 18px arial");
+        farewell.setTextFill(textColor);
+
+        Label playersThatWon = new Label();
+        //set players that won
+        if(winningPlayerIndexes.size() == 1) {
+            playersThatWon.setText("Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " for winning this game of Pitch!");
+        }
+        else {
+            String prompt = "Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " & ";
+            for(int i = 1; i < winningPlayerIndexes.size(); i++) {
+                prompt += "Player " + Integer.toString(winningPlayerIndexes.get(i) + 1) + " ";
+                if(i != winningPlayerIndexes.size() - 1) prompt += "& ";
+            }
+            prompt += "for winning this game of Pitch!";
+        }
+        playersThatWon.setStyle("-fx-font: 12px arial");
+        playersThatWon.setTextFill(textColor);
+
+        Button exit = new Button("Exit Application");
+        exit.setOnAction(e -> window.close());
+
+        end.getChildren().addAll(farewell,playersThatWon,exit);
+        end.setStyle(roundSummaryStyle);
+        end.setAlignment(Pos.CENTER);
+        layout.setCenter(end);
+
+
+    }
+
+
+    public void incrementRoundCounter() {
         RoundCount.setText("Round: " + Integer.toString(roundCount));
     }
-    void setPrompt(int playerWon) {
+    public void setPrompt(int playerWon) {
         if(playerWon == 0) {
             Prompt.setText("");
             return;
