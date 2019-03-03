@@ -31,12 +31,15 @@ public class Deck {
 
 
     public void addCard(Card card) {
-        Card newCard = new Card(this,card.getRank(),card.getFace(),selectable);
+        Card newCard;
+        if(displayPane == null) newCard = new Card(this,card.getRank(),card.getFace(),selectable,false);
+        else newCard = new Card(this,card.getRank(),card.getFace(),selectable,true);
+
         cards.add(newCard);
         if(renderable) {
             newCard.setScale(scaleFactor);
             if(displayPane != null) displayPane.getChildren().add(newCard.View());
-            reRender();
+            if(displayPane != null) reRender();
         }
 
 
@@ -45,7 +48,7 @@ public class Deck {
     //remove card from deck
     public boolean removeCard(Card card) {
        if(moveCardTo(destinationGroup, card)) {
-           reRender();
+           if(displayPane != null) reRender();
            return true;
        }
        else {
@@ -76,7 +79,7 @@ public class Deck {
                 cards.remove(i);
 
 
-                reRender();
+                if(displayPane != null) reRender();
                 return true;
             }
         }

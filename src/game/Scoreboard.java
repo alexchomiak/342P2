@@ -3,12 +3,14 @@ package game;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import static game.PitchConstants.*;
 import java.util.ArrayList;
@@ -29,12 +31,22 @@ public class Scoreboard {
     ImageView trumpView;
 
 
-    Scoreboard(int numPlayers) {
+    Scoreboard(int numPlayers, Stage window) {
         displayPane = new FlowPane(Orientation.VERTICAL);
         displayPane.setVgap(10);
         displayPane.setHgap(20);
         displayPane.setPadding(new Insets(20,20,20,20));
 
+
+        Button exitGame = new Button("Exit Application");
+        exitGame.setOnAction(e -> {
+            window.close();
+        });
+
+        exitGame.setScaleX(.75);
+        exitGame.setScaleY(.75);
+
+        displayPane.getChildren().add(exitGame);
 
         turnSubjectPrompt = new Label("Turn");
         turnSubjectPrompt.setStyle("-fx-font: 18 arial;");
@@ -110,6 +122,7 @@ public class Scoreboard {
         initial.add(0);
         setScores(initial);
         setBids(initial);
+
 
 
 

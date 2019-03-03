@@ -172,6 +172,7 @@ public class Player {
             parent.setBidWindowOpen(true);
             FlowPane bidMenu = new FlowPane(Orientation.VERTICAL);
             Label Prompt = new Label("Make your bid for the Round!");
+            Prompt.setStyle("-fx-font: 18px arial");
             bidMenu.setVgap(10);
             Prompt.setTextFill(textColor);
             bidMenu.getChildren().add(Prompt);

@@ -94,6 +94,7 @@ public class PitchScoreCalculator {
 
 
     VBox calculateRoundScore(Pitch game) {
+
         game.setRoundSummaryInProgress(true);
         game.getScoreboard().setTurnPrompt(0);
 

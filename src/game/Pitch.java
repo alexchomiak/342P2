@@ -142,7 +142,7 @@ public class Pitch implements DealerType{
                 for(int i = 0; i < gameField.getCards().size(); i++) {
                     //intialize card to be added to stack
                     Card card = new Card(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
-
+                    card.setScale(1.25);
                     card.rotate(45 * i);
 
                     //push new rotated stack
@@ -220,7 +220,7 @@ public class Pitch implements DealerType{
             public void handle(long now) {
 
                 if(!currentPlayer.getTurnStarted()) {
-                    timeDelay(150);
+                    //timeDelay(100);
                     currentPlayer.startTurn(currentPlayer == startPlayer);
                 }
 
@@ -395,7 +395,7 @@ public class Pitch implements DealerType{
 
 
 
-                if(!trickInProgress && !bettingInProgress && roundInProgress){
+                if(!trickInProgress && !bettingInProgress && !roundSummaryInProgress && roundInProgress){
                     bidWindowOpen = false;
 
                     //check if player hands empty to signify round over, if so calculate scores
@@ -437,7 +437,7 @@ public class Pitch implements DealerType{
 
 
         //initialize scoreboard instance
-        scoreboard = new Scoreboard(playerCount);
+        scoreboard = new Scoreboard(playerCount,window);
         layout.setLeft(scoreboard.View());
 
         trickList = new TrickList();

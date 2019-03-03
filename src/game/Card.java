@@ -68,6 +68,10 @@ public class Card {
 
     //handle click on card
     private void handleClick() {
+
+
+
+
         //if card is not currently selectable, ignore click event
         if (!cardIsSelectable) return;
 
@@ -99,6 +103,9 @@ public class Card {
             cardRect.setStroke(Color.ORANGERED);
             cardRect.setStrokeWidth(2);
 
+            cardRect.setScaleX(1.1);
+            cardRect.setScaleY(1.1);
+
             if (this.x > -1 && this.y > -1) {
                 cardRect.setTranslateY(this.y - hoverOffset);
             }
@@ -107,6 +114,8 @@ public class Card {
 
         } else {
             cardRect.setStrokeWidth(0);
+            cardRect.setScaleX(1.0);
+            cardRect.setScaleY(1.0);
 
             if (this.x > -1 && this.y > -1) {
                 cardRect.setTranslateY(this.y);

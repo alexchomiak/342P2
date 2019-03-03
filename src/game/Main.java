@@ -68,8 +68,10 @@ public class Main extends Application  {
         Label Greeting = new Label("Welcome to the Pitch Game!");
         Greeting.setTextFill(textColor);
         Label Prompt = new Label("Choose a number of players to play against!");
+        Prompt.setStyle("-fx-font: 20 arial");
         Prompt.setTextFill(textColor);
         currentPlayerCountSelection = new Label("Current Selection: 4 Players");
+        currentPlayerCountSelection.setStyle("-fx-font: 20 arial");
         currentPlayerCountSelection.setTextFill(textColor);
 
 
@@ -97,6 +99,8 @@ public class Main extends Application  {
         Card displayCard = new Card(null,1,'S',false);
 
 
+        displayCard.View().setWidth(1.5 * cardImageWidth);
+        displayCard.View().setHeight(1.5 * cardImageHeight);
 
         //create animation timer for rotating card on menu screen
         AnimationTimer timer = new AnimationTimer() {
@@ -106,6 +110,7 @@ public class Main extends Application  {
             @Override
             public void handle(long now) {
                 scalor += 5;
+
 
                 if(scalor < 180) {
                     displayCard.View().setScaleX( (180.0 - (double)scalor)/180.0);
