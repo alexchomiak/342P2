@@ -1,20 +1,15 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ListChangeListener;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.awt.*;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -325,7 +320,7 @@ public class Pitch implements DealerType{
                     if(startPlayer.getHand().getCards().size() == 0) {
                         roundInProgress = false;
 
-                        layout.setCenter(scoreCalculator.calculateRoundWinner(game));
+                        layout.setCenter(scoreCalculator.calculateRoundScore(game));
                         roundEnded = true;
 
                         this.stop();

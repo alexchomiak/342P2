@@ -24,7 +24,12 @@ public class Main extends Application  {
     Scene mainMenu, gameWindow;
     Button button;
 
-    private int players = 2;
+
+    private Button twoPlayers;
+    private Button threePlayers;
+    private Button fourPlayers;
+
+    private int players = 4;
 
     public static void main(String[] args) {
         launch(args);
@@ -38,7 +43,6 @@ public class Main extends Application  {
         initializeMenuScene();
 
 
-        Button fourPlayers = new Button("4 Players");
 
 
        //set title and show window
@@ -46,6 +50,8 @@ public class Main extends Application  {
        window.setScene(mainMenu);
 
        window.show();
+
+       fourPlayers.requestFocus();
         primaryStage.setMinWidth(primaryStage.getWidth());
         primaryStage.setMinHeight(primaryStage.getHeight());
     }
@@ -64,7 +70,7 @@ public class Main extends Application  {
         Greeting.setTextFill(textColor);
         Label Prompt = new Label("Choose a number of players to play against!");
         Prompt.setTextFill(textColor);
-        currentPlayerCountSelection = new Label("Current Selection: 2 Players");
+        currentPlayerCountSelection = new Label("Current Selection: 4 Players");
         currentPlayerCountSelection.setTextFill(textColor);
 
 
@@ -194,6 +200,11 @@ public class Main extends Application  {
         exitButton.setOnAction(e -> exitProgram());
 
         layout.setStyle(titleStyle);
+
+
+        this.fourPlayers = fourPlayers;
+        this.threePlayers = threePlayers;
+        this.twoPlayers = twoPlayers;
 
         mainMenu = new Scene(layout,windowWidth,windowHeight);
     }
