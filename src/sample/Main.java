@@ -95,7 +95,7 @@ public class Main extends Application  {
 
 
         //animating
-        CardView displayCard = new CardView(null,1,'S',false);
+        Card displayCard = new Card(null,1,'S',false);
 
 
 
@@ -107,14 +107,6 @@ public class Main extends Application  {
             @Override
             public void handle(long now) {
                 scalor += 5;
-                //rotator += .5;
-                //displayCard.rotate(rotator);
-
-                //if(rotator == 360) rotator = 0;
-
-
-
-
 
                 if(scalor < 180) {
                     displayCard.View().setScaleX( (180.0 - (double)scalor)/180.0);
@@ -124,11 +116,6 @@ public class Main extends Application  {
                     double j = scalor - 181;
                     displayCard.View().setScaleX(j/180.0);
                 }
-
-
-
-
-
 
                 if(scalor == 180 && offset % 2 == 0) {
                    displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/AS.png")));

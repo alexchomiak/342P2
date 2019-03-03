@@ -37,11 +37,10 @@ public class Player {
     protected boolean madeBid = false;
 
     protected int playerNumber;
-    protected void setPlayerNumber(int i){this.playerNumber = i;}
-    protected int getPlayerNumber(){return this.playerNumber;}
+
 
     Player(){}
-    Player(Deck gameField, Deck currentTrick, Pitch parent) {
+    public Player(Deck gameField, Deck currentTrick, Pitch parent) {
         handDisplay = new FlowPane();
 
         //add invisible rectangle to hold place so when hand becomes empty, the whole
@@ -95,31 +94,24 @@ public class Player {
     }
 
 
-    void setNextPlayer(Player p) {
-        this.nextPlayer = p;
-    }
-    Player getNextPlayer(){return this.nextPlayer;}
 
-    void startNextTurn() {
+    protected void startNextTurn() {
         if(nextPlayer.getCompleted() == true) {
             return;
         }
         parent.setCurrentPlayer(getNextPlayer());
     }
 
-    void giveCard(Card card) {
+    public void giveCard(Card card) {
         hand.addCard(card);
     }
 
-    void reset() { turnCompleted = false; turnStarted = false;}
-    void resetBids(){madeBid = false; currentBid = -1; parent.getCurrentBids().set(playerNumber - 1,-1);}
+    public void reset() { turnCompleted = false; turnStarted = false;}
+    public void resetBids(){madeBid = false; currentBid = -1; parent.getCurrentBids().set(playerNumber - 1,-1);}
 
-    boolean getTurnStarted(){return turnStarted;}
-    boolean getCompleted() { return turnCompleted;}
-    boolean getBidded(){return madeBid;}
 
-    void startTurn(boolean startingPlayer) {
-        //parent.timeDelay(200);
+    public void startTurn(boolean startingPlayer) {
+        if(turnCompleted) return;
         parent.getScoreboard().setTurnPrompt(playerNumber);
         turnStarted = true;
 
@@ -133,7 +125,7 @@ public class Player {
             for(int i = 0; i < hand.getCards().size(); i++) {
                 //set cards that are valid to be used in turn
                 if(hand.getCards().get(i).getFace() == parent.getCurrentLeadSuit() || hand.getCards().get(i).getFace() == parent.getCurrentTrumpSuit()) {
-                    hand.getCardViews().get(i).setCardIsSelectable(true);
+                    hand.getCards().get(i).setCardIsSelectable(true);
                     validCardsFound = true;
                 }
             }
@@ -145,22 +137,18 @@ public class Player {
             hand.setSelectable(true);
         }
 
-        if(turnCompleted) return;
         hand.setSelectedCard(null);
 
     }
 
 
-    protected void addWonCard(Card c){
+    public void addWonCard(Card c){
         wonTricks.addCard(c);
     }
 
 
-    protected Deck getTricks() {return this.wonTricks;}
 
-    protected int getCurrentBid(){return this.currentBid;}
-
-    protected void handleBid(int bid) {
+    public void handleBid(int bid) {
 
         madeBid = true;
         currentBid = bid;
@@ -223,15 +211,59 @@ public class Player {
 
 
 
-    Deck getWonTricks(){return this.getWonTricks();}
-    Deck getHand(){ return this.hand; }
+    public Deck getWonTricks(){return this.getWonTricks();}
+    public Deck getHand(){ return this.hand; }
 
-    FlowPane display() {
+    public FlowPane display() {
 
         return this.handDisplay;
     }
 
 
 
+    //getters and setters
+
+    public Deck getTricks() {return this.wonTricks;}
+
+    public int getCurrentBid(){return this.currentBid;}
+
+    public boolean getTurnStarted(){return turnStarted;}
+    public boolean getCompleted() { return turnCompleted;}
+    public boolean getBidded(){return madeBid;}
+    public void setPlayerNumber(int i){this.playerNumber = i;}
+    public int getPlayerNumber(){return this.playerNumber;}
+
+    void setNextPlayer(Player p) {
+        this.nextPlayer = p;
+    }
+    Player getNextPlayer(){return this.nextPlayer;}
+
+    public void setCurrentBid(int currentBid) {
+        this.currentBid = currentBid;
+    }
+
+    public boolean isTurnStarted() {
+        return turnStarted;
+    }
+
+    public void setTurnStarted(boolean turnStarted) {
+        this.turnStarted = turnStarted;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public boolean isStartingPlayer() {
+        return startingPlayer;
+    }
+
+    public void setStartingPlayer(boolean startingPlayer) {
+        this.startingPlayer = startingPlayer;
+    }
 }
 

@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class AIPlayer extends Player{
-    AIPlayer(Deck gameField, Deck currentTrick, Pitch parent) {
+    public AIPlayer(Deck gameField, Deck currentTrick, Pitch parent) {
         super(gameField, currentTrick,parent);
 
     }
@@ -153,27 +153,7 @@ public class AIPlayer extends Player{
                 }
             }
 
-            /*
-            if(this != parent.getStartPlayer() && parent.getCurrentLeadSuit() != parent.getCurrentTrumpSuit()) {
-                int maxRank = 0;
-                for(int i = 0; i < cards.size(); i++) {
-                    if(cards.get(i).getFace() == parent.getCurrentLeadSuit() && (cards.get(i).getRank() > maxRank || cards.get(i).getRank() == 1)) {
-                        selectedCard = cards.get(i);
-                        if(cards.get(i).getRank() == 1) break;
-                        maxRank = cards.get(i).getRank();
-                    }
-                }
-            } else if(parent.getCurrentTrumpSuit() == parent.getCurrentLeadSuit()) {
-                int maxRank = 0;
-                for(int i = 0; i < cards.size(); i++) {
-                    if(cards.get(i).getFace() == parent.getCurrentTrumpSuit() && (cards.get(i).getRank() > maxRank || cards.get(i).getRank() == 1)) {
-                        selectedCard = cards.get(i);
-                        if(cards.get(i).getRank() == 1) break;
-                        maxRank = cards.get(i).getRank();
-                    }
-                }
-            }
-            */
+
 
         }
 
@@ -193,7 +173,7 @@ public class AIPlayer extends Player{
 
     }
 
-    void startTurn(boolean startingPlayer) {
+    public void startTurn(boolean startingPlayer) {
 
         parent.getScoreboard().setTurnPrompt(playerNumber);
 
@@ -207,7 +187,7 @@ public class AIPlayer extends Player{
     }
 
 
-    void makeMove(Card move) {
+    private void makeMove(Card move) {
         if(startingPlayer) {
             parent.setCurrentLeadSuit(move.getFace());
             turnStarted = true;
@@ -224,15 +204,16 @@ public class AIPlayer extends Player{
 
     }
 
-    void makeBid() {
+    public void makeBid() {
         int bid = calculateBestBid();
         handleBid(bid);
     }
 
 
 
+
     //AI ALGORITHMS START
-    int calculateBestBid() {
+    private int calculateBestBid() {
         int calculatedBid = 0;
 
         //calculate eligible bids
@@ -326,10 +307,6 @@ public class AIPlayer extends Player{
             case 3: suit = 'S'; break;
         }
         return suit;
-    }
-
-    void calculateBestMove() {
-
     }
 
 }

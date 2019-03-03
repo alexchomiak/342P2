@@ -92,13 +92,13 @@ public class TrickList {
 
 
 
-    void addToList(ArrayList<CardView> trick, int winningIndex, int playerWon) {
+    void addToList(ArrayList<Card> trick, int winningIndex, int playerWon) {
 
 
         HBox row = new HBox();
         row.setSpacing(2);
         trick.forEach(t -> {
-            CardView card = t;
+            Card card = t;
             t.setScale(cardScaleFactor);
             row.getChildren().add(card.View());
         }

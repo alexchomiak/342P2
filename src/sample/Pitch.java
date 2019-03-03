@@ -77,6 +77,7 @@ public class Pitch implements DealerType{
     int getTrickNum(){return this.currentTrickNumber;}
     char getCurrentTrumpSuit(){return this.currentTrumpSuit;}
     char getCurrentLeadSuit(){return this.currentLeadSuit;}
+    void setCurrentTrick(Deck d){this.currentTrick = d;}
     Deck getCurrentTrick(){return this.currentTrick;}
     Player getStartPlayer(){return this.startPlayer;}
     Player getPlayer(){return this.player;}
@@ -100,7 +101,7 @@ public class Pitch implements DealerType{
     }
 
 
-    Pitch(Stage window, int playerCount, int windowWidth, int windowHeight) {
+    public Pitch(Stage window, int playerCount, int windowWidth, int windowHeight) {
         this.window = window;
         this.playerCount = playerCount;
         this.windowWidth = windowWidth;
@@ -163,7 +164,7 @@ public class Pitch implements DealerType{
                         startPlayer.addWonCard(currentTrick.getCards().get(i));
                     }
 
-                    ArrayList<CardView> views = currentTrick.getCardViews();
+                    ArrayList<Card> views = currentTrick.getCards();
                     //System.out.println(trickWinningIndex);
 
 
@@ -346,7 +347,12 @@ public class Pitch implements DealerType{
     }
     void start() {
 
-        pitchDealer = createDealer();
+        //initialize game scene and set window to game window
+        intializeGameScene();
+        layout.setStyle("-fx-background-image: url('/Assets/background_image.jpg');-fx-background-size: cover;");
+
+
+
         scoreCalculator = new PitchScoreCalculator();
 
         //placeholder flowpane for Deck objects that interact with gui
@@ -370,9 +376,9 @@ public class Pitch implements DealerType{
             public void onChanged(ListChangeListener.Change<? extends Node> c) {
                 //update deck
                 cardStack = new StackPane();
-                for(int i = 0; i < gameField.getCardViews().size(); i++) {
+                for(int i = 0; i < gameField.getCards().size(); i++) {
                     //intialize card to be added to stack
-                    CardView card = new CardView(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
+                    Card card = new Card(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
 
                     card.rotate(45 * i);
 
@@ -412,8 +418,7 @@ public class Pitch implements DealerType{
 
 
 
-        //initialize game scene and set window to game window
-        intializeGameScene();
+
         window.setScene(gameWindow);
 
 
@@ -473,6 +478,8 @@ public class Pitch implements DealerType{
             }
         };
 
+        pitchDealer = createDealer();
+
         gameThread.start();
 
         /*
@@ -482,13 +489,9 @@ public class Pitch implements DealerType{
             //check for winners
         }
         */
-        layout.setStyle("-fx-background-image: url('/Assets/background_image.jpg');-fx-background-size: cover;");
     }
 
     void intializeGameScene() {
-        Label hello = new Label("Hello");
-
-
         layout = new BorderPane();
 
 

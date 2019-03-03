@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class PitchDealer implements Dealer {
@@ -26,7 +27,7 @@ public class PitchDealer implements Dealer {
                     default: face = 'C'; break;
                 }
 
-                Card card = new Card(j,face);
+                Card card = new Card(this.deck,j,face,false, false);
                 deck.addCard(card);
             }
         }
@@ -42,29 +43,11 @@ public class PitchDealer implements Dealer {
         Random rand = new Random();
         ArrayList<Card> returnHand = new ArrayList<Card>();
 
+        Collections.shuffle(deck.getCards());
         for(int i = 0; i < 6; i++) {
             //loop until valid card is chosen
-            Card addition = null;
-            boolean validCardChosen = false;
-            while(!validCardChosen) {
-                char face;
-                switch( rand.nextInt(4)) {
-                    case 0: face = 'C'; break;
-                    case 1: face = 'D'; break;
-                    case 2: face = 'H'; break;
-                    case 3: face = 'S'; break;
-                    default: face = 'C'; break;
-                }
-
-                int rank = rand.nextInt(14);
-
-                addition = new Card(rank,face);
-
-                if(deck.removeCard(addition)) {
-                    validCardChosen = true;
-                }
-
-            }
+            Card addition = deck.getCards().get(0);
+            deck.removeCard(addition);
             returnHand.add(addition);
         }
         return returnHand;

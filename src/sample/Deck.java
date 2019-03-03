@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,6 @@ public class Deck {
 
 
     ArrayList<Card> cards;
-    ArrayList<CardView> cardViews;
 
     private boolean selectable = false;
     private boolean renderable = false;
@@ -21,26 +21,22 @@ public class Deck {
     private Deck destinationGroup;
     FlowPane displayPane;
 
-    Deck(FlowPane displayPane) {
+    public Deck(FlowPane displayPane) {
         this.displayPane = displayPane;
         this.selectable = false;
         this.renderable = displayPane != null;
         this.destinationGroup = destinationGroup;
         cards = new ArrayList<Card>();
-        cardViews = new ArrayList<CardView>();
         selectedCard = null;
     }
 
 
-    void addCard(Card card) {
-        cards.add(new Card(card.getRank(),card.getFace()));
-
-
+    public void addCard(Card card) {
+        Card newCard = new Card(this,card.getRank(),card.getFace(),selectable);
+        cards.add(newCard);
         if(renderable) {
-            CardView cardView = new CardView(this,card.getRank(),card.getFace(),selectable);
-            cardView.setScale(scaleFactor);
-            cardViews.add(cardView);
-            if(displayPane != null) displayPane.getChildren().add(cardView.View());
+            newCard.setScale(scaleFactor);
+            if(displayPane != null) displayPane.getChildren().add(newCard.View());
             reRender();
         }
 
@@ -48,7 +44,7 @@ public class Deck {
     }
 
     //remove card from deck
-    boolean removeCard(Card card) {
+    public boolean removeCard(Card card) {
        if(moveCardTo(destinationGroup, card)) {
            reRender();
            return true;
@@ -59,7 +55,9 @@ public class Deck {
     }
 
 
-    boolean moveCardTo(Deck dest, Card card) {
+    public FlowPane getDisplayPane(){return  this.displayPane;}
+
+    public boolean moveCardTo(Deck dest, Card card) {
         //move card to destination deck
         for(int i = 0; i < cards.size(); i++) {
             //loop through group until card is found
@@ -70,14 +68,15 @@ public class Deck {
                     dest.addCard(cards.get(i));
                 }
 
+                //if the card was renderable, remove it from parent display pane
+                if(renderable) {
+                    if(displayPane != null) displayPane.getChildren().remove(cards.get(i).View());
+                }
+
                 //remove card from current deck
                 cards.remove(i);
 
-                //if the card was renderable, remove it from parent display pane
-                if(renderable) {
-                    if(displayPane != null) displayPane.getChildren().remove(cardViews.get(i).View());
-                    cardViews.remove(i);
-                }
+
                 reRender();
                 return true;
             }
@@ -88,12 +87,11 @@ public class Deck {
     }
 
 
-    ArrayList<Card> getCards() {return this.cards;}
-    ArrayList<CardView> getCardViews(){return this.cardViews;}
+    public ArrayList<Card> getCards() {return this.cards;}
 
 
     //set selected card in deck
-    boolean setSelectedCard(Card selection) {
+    public boolean setSelectedCard(Card selection) {
         if(selection == null) {
             this.selectedCard = null;
             return true;
@@ -110,20 +108,20 @@ public class Deck {
     }
 
     //get selected card in deck
-    Card getSelectedCard() {return this.selectedCard;}
+    public Card getSelectedCard() {return this.selectedCard;}
 
 
     //set if cardviews in deck are selectable by mouse or not
-    void setSelectable(boolean s) {
+    public void setSelectable(boolean s) {
         this.selectable = s;
-        for(int i = 0; i < cardViews.size(); i++) {
-            cardViews.get(i).setCardIsSelectable(s);
+        for(int i = 0; i < cards.size(); i++) {
+            cards.get(i).setCardIsSelectable(s);
         }
     }
 
-    void setScale(double s) {
+    public void setScale(double s) {
         scaleFactor = s;
-        cardViews.forEach(card -> {
+        cards.forEach(card -> {
             displayPane.getChildren().remove(card.View());
             card.setScale(s);
             displayPane.getChildren().add(card.View());
@@ -131,76 +129,77 @@ public class Deck {
 
     }
 
-    double getScale() {
+    public double getScale() {
         return this.scaleFactor;
     }
 
     //set if renderable for other purposes
-    void setRenderable(boolean r) {
+    public void setRenderable(boolean r) {
         this.renderable = r;
     }
 
 
     public void clearDeck() {
-        for(int i = 0; i < cardViews.size(); i++) {
-            displayPane.getChildren().remove(cardViews.get(i).View());
+        if(displayPane != null){
+            for(int i = 0; i < cards.size(); i++) {
+                displayPane.getChildren().remove(cards.get(i).View());
+            }
         }
-        cardViews.clear();
         cards.clear();
     }
 
-    void reRender() {
+    public void reRender() {
         int angularOffset = 15;
         int yOffset = 50;
 
-        for(int i = 0; i < cardViews.size(); i++) {
+        for(int i = 0; i < cards.size(); i++) {
 
             //cardViews.get(i).rotate(30);
 
-            cardViews.get(i).setY(0);
+            cards.get(i).setY(0);
 
-            int size = cardViews.size() - 1;
+            int size = cards.size() - 1;
             int offset;
             if(size % 2 == 1) {
                 if(i <= size/2) {
                     if(i == size/2) {
-                        cardViews.get(i).rotate(-angularOffset/2);
-                        cardViews.get(i).setY(0);
+                        cards.get(i).rotate(-angularOffset/2);
+                        cards.get(i).setY(0);
                     }
                     else {
                         offset = (size/2) - i;
-                        cardViews.get(i).rotate(-1*((offset * angularOffset) + angularOffset/2));
-                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                        cards.get(i).rotate(-1*((offset * angularOffset) + angularOffset/2));
+                        cards.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
                     }
                 }
                 else {
                     if(i == size/2 + 1) {
-                        cardViews.get(i).rotate(angularOffset/2);
-                        cardViews.get(i).setY(0);
+                        cards.get(i).rotate(angularOffset/2);
+                        cards.get(i).setY(0);
                     }
                     else {
                         offset = i - ((size/2) + 1);
-                        cardViews.get(i).rotate((offset * angularOffset) + angularOffset/2);
-                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                        cards.get(i).rotate((offset * angularOffset) + angularOffset/2);
+                        cards.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
 
                     }
                 }
             }
             else {
                 if(i == size / 2) {
-                    cardViews.get(i).rotate(0);
-                    cardViews.get(i).setY(angularOffset / 2);
+                    cards.get(i).rotate(0);
+                    cards.get(i).setY(angularOffset / 2);
                 }
                 else {
                     if( i < size/2) {
                         offset = size/2 - i;
-                        cardViews.get(i).rotate(offset * -angularOffset);
-                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                        cards.get(i).rotate(offset * -angularOffset);
+                        cards.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
                     }
                     else{
                         offset = i - size/2;
-                        cardViews.get(i).rotate(offset * angularOffset);
-                        cardViews.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
+                        cards.get(i).rotate(offset * angularOffset);
+                        cards.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
                     }
                 }
             }

@@ -86,7 +86,7 @@ public class PitchScoreCalculator {
 
 
 
-        for(int i =0 ; i < winningIndex; i++) {
+        for(int i = 0 ; i < winningIndex; i++) {
             startPlayer = startPlayer.getNextPlayer();
         }
 
