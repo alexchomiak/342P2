@@ -71,24 +71,24 @@ public class Pitch implements DealerType{
     private ArrayList<Integer> currentScores;
     private ArrayList<Integer> currentBids;
 
-    void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
-    void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
-    void setTrickWinningIndex(int i){this.trickWinningIndex = i;}
-    int getTrickNum(){return this.currentTrickNumber;}
-    char getCurrentTrumpSuit(){return this.currentTrumpSuit;}
-    char getCurrentLeadSuit(){return this.currentLeadSuit;}
-    void setCurrentTrick(Deck d){this.currentTrick = d;}
-    Deck getCurrentTrick(){return this.currentTrick;}
-    Player getStartPlayer(){return this.startPlayer;}
-    Player getPlayer(){return this.player;}
-    void setCurrentPlayer(Player p){this.currentPlayer = p;}
-    Player getCurrentPlayer(){return this.currentPlayer;}
-    void setRoundSummaryInProgress(boolean s){ this.roundSummaryInProgress = s;}
-    void setBidWindowOpen(boolean s) { this.bidWindowOpen = s;}
-    boolean getBidWindowOpen() {return this.bidWindowOpen;}
-    BorderPane getLayout(){return this.layout;}
-    StackPane getCardStack(){return this.cardStack;}
-    Scoreboard getScoreboard(){return this.scoreboard;}
+    public void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
+    public  void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
+    public void setTrickWinningIndex(int i){this.trickWinningIndex = i;}
+    public int getTrickNum(){return this.currentTrickNumber;}
+    public  char getCurrentTrumpSuit(){return this.currentTrumpSuit;}
+    public  char getCurrentLeadSuit(){return this.currentLeadSuit;}
+    public void setCurrentTrick(Deck d){this.currentTrick = d;}
+    public Deck getCurrentTrick(){return this.currentTrick;}
+    public  Player getStartPlayer(){return this.startPlayer;}
+    public Player getPlayer(){return this.player;}
+    public void setCurrentPlayer(Player p){this.currentPlayer = p;}
+    public  Player getCurrentPlayer(){return this.currentPlayer;}
+    public void setRoundSummaryInProgress(boolean s){ this.roundSummaryInProgress = s;}
+    public  void setBidWindowOpen(boolean s) { this.bidWindowOpen = s;}
+    public  boolean getBidWindowOpen() {return this.bidWindowOpen;}
+    public BorderPane getLayout(){return this.layout;}
+    public StackPane getCardStack(){return this.cardStack;}
+    public Scoreboard getScoreboard(){return this.scoreboard;}
 
 
     ArrayList<Integer> getCurrentScores() {return this.currentScores;}

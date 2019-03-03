@@ -105,7 +105,11 @@ public class Player {
     }
 
     public void reset() { turnCompleted = false; turnStarted = false;}
-    public void resetBids(){madeBid = false; currentBid = -1; parent.getCurrentBids().set(playerNumber - 1,-1);}
+    public void resetBids(){
+        madeBid = false;
+        currentBid = -1;
+        if(parent != null )parent.getCurrentBids().set(playerNumber - 1,-1);
+    }
 
 
     public void startTurn(boolean startingPlayer) {
