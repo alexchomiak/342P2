@@ -247,8 +247,9 @@ public class Pitch implements DealerType{
 
     void startRound() {
         startPlayer = player;
-        scoreboard.setBids(currentBids);
         resetPlayerBids();
+        scoreboard.setBids(currentBids);
+
         setPrompt(0);
         scoreboard.setScores(this.currentScores);
         scoreboard.setTrumpSuit('E');

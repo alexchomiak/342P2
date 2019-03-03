@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/AIPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/AIPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/CardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Deck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Pitch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchDealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/PitchDealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/sample/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/sample/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/AIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Pitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Pitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/PitchDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PitchDealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Player.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Pitch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1647">
-              <caret line="257" selection-start-line="257" selection-end-line="257" />
+            <state relative-caret-position="542">
+              <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3279#3280#0" expanded="true" />
@@ -143,6 +125,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Scoreboard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1324">
+              <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DealerType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -154,24 +148,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/AIPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="158">
+              <caret line="275" column="7" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1634#1643#0" expanded="true" />
-                <element signature="e#2115#2124#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/PitchScoreCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
-              <caret line="107" column="47" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#7584#7593#0" expanded="true" />
+                <element signature="e#8062#8071#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,7 +196,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>void make</find>
       <find>parent</find>
       <find>clear</find>
       <find>system.out</find>
@@ -243,6 +224,7 @@
       <find>Dealer</find>
       <find>getCurrentBids</find>
       <find>system.o</find>
+      <find>Sys</find>
       <find>Sy</find>
     </findStrings>
   </component>
@@ -289,8 +271,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="125" />
-    <option name="y" value="23" />
+    <option name="x" value="29" />
+    <option name="y" value="199" />
     <option name="width" value="1612" />
     <option name="height" value="981" />
   </component>
@@ -351,7 +333,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551569020468" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551577063937" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -468,7 +450,7 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="125" y="23" width="1612" height="981" extended-state="0" />
+    <frame x="29" y="199" width="1612" height="981" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16242038" />
@@ -480,7 +462,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32908162" />
-      <window_info active="true" anchor="bottom" x="1682" y="-957" width="1420" height="568" id="Run" order="2" type="FLOATING" visible="true" weight="0.25510204" />
+      <window_info active="true" anchor="bottom" x="2" y="23" width="1420" height="568" id="Run" order="2" type="FLOATING" visible="true" weight="0.25510204" />
       <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24971879" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -689,16 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Scoreboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CardView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
@@ -785,10 +757,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Scoreboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1324">
+          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Pitch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1647">
-          <caret line="257" selection-start-line="257" selection-end-line="257" />
+        <state relative-caret-position="542">
+          <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3279#3280#0" expanded="true" />
@@ -805,12 +787,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AIPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="158">
+          <caret line="275" column="7" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1634#1643#0" expanded="true" />
-            <element signature="e#2115#2124#0" expanded="true" />
+            <element signature="e#7584#7593#0" expanded="true" />
+            <element signature="e#8062#8071#0" expanded="true" />
           </folding>
         </state>
       </provider>
