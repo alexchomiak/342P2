@@ -173,7 +173,7 @@ public class AIPlayer extends Player{
 
     public void startTurn(boolean startingPlayer) {
 
-        parent.getScoreboard().setTurnPrompt(playerNumber);
+        if(parent.getScoreboard() != null) parent.getScoreboard().setTurnPrompt(playerNumber);
 
         turnStarted = true;
         this.startingPlayer = startingPlayer;
@@ -211,7 +211,7 @@ public class AIPlayer extends Player{
 
 
     //AI ALGORITHMS START
-    private int calculateBestBid() {
+    public int calculateBestBid() {
         int calculatedBid = 0;
 
         //calculate eligible bids
@@ -232,7 +232,7 @@ public class AIPlayer extends Player{
 
         int maxBid = 0;
         char chosenSuit = 'E';
-        System.out.println("Bid");
+
         for(int i = 0; i < 4; i++) {
             char suit = 'E';
             suit = getSuit(i);
@@ -244,8 +244,10 @@ public class AIPlayer extends Player{
 
             int numScoringCards = 0;
 
-            for(int j = 1; j < cards.size(); j++) {
+            for(int j = 0; j < cards.size(); j++) {
+
                 int rank = cards.get(j).getRank();
+
                 if(cards.get(j).getFace() != suit) continue;
 
                 if(rank == 1 || rank >= 10) numScoringCards++;
@@ -306,5 +308,7 @@ public class AIPlayer extends Player{
         }
         return suit;
     }
+
+    public Pitch getParent(){return this.parent;}
 
 }

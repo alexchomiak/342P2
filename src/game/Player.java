@@ -65,6 +65,8 @@ public class Player {
 
         this.parent = parent;
 
+        currentBid = -1;
+
         handDisplay.getChildrenUnmodifiable().addListener(new ListChangeListener<Node>() {
             @Override
             public void onChanged(Change<? extends Node> c) {

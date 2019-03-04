@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
-      <change beforePath="$PROJECT_DIR$/src/TestSuite/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestSuite/DeckTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Pitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Pitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/AIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/AIPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,14 +67,35 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/game/Pitch.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="530">
-                    <caret line="542" column="29" selection-start-line="542" selection-start-column="19" selection-end-line="542" selection-end-column="29" />
+                  <state relative-caret-position="125">
+                    <caret line="515" selection-start-line="515" selection-end-line="515" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/game/AIPlayer.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="329">
+                    <caret line="234" selection-start-line="234" selection-end-line="234" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/game/Player.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="2457">
+                    <caret line="239" column="27" selection-start-line="239" selection-start-column="19" selection-end-line="239" selection-end-column="27" />
                   </state>
                 </provider>
               </entry>
@@ -89,11 +110,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="281">
+              <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#807#808#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#2422#2423#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,7 +129,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/CardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-567">
+            <state relative-caret-position="-539">
               <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -110,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/DeckTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+            <state relative-caret-position="420">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1447#1448#0" expanded="true" />
@@ -139,22 +167,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/PlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1470">
-              <caret line="98" column="38" lean-forward="true" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+            <state relative-caret-position="1389">
+              <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4254#4255#0" expanded="true" />
                 <element signature="e#4353#4354#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="242" column="11" selection-start-line="242" selection-start-column="11" selection-end-line="242" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -182,22 +201,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/AIPlayer.java">
+        <entry file="file://$PROJECT_DIR$/src/game/PitchScoreCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="282" selection-start-line="282" selection-end-line="282" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/PitchDealer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
+            <state relative-caret-position="352">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -218,8 +225,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>System.out</find>
-      <find>System</find>
       <find>sys</find>
       <find>timeDe</find>
       <find>setTru</find>
@@ -248,6 +253,8 @@
       <find>delay</find>
       <find>timeDelay</find>
       <find>resetGame</find>
+      <find>getStylesh</find>
+      <find>getCompl</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -293,7 +300,6 @@
         <option value="$PROJECT_DIR$/src/sample/PitchScoreCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/sample/Deck.java" />
         <option value="$PROJECT_DIR$/src/sample/Player.java" />
-        <option value="$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PitchScoreCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/game/PitchConstants.java" />
         <option value="$PROJECT_DIR$/src/game/Card.java" />
@@ -303,10 +309,12 @@
         <option value="$PROJECT_DIR$/src/game/Main.java" />
         <option value="$PROJECT_DIR$/src/game/Scoreboard.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/game/Player.java" />
         <option value="$PROJECT_DIR$/src/game/Pitch.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PitchTest.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/DeckTest.java" />
+        <option value="$PROJECT_DIR$/src/game/Player.java" />
+        <option value="$PROJECT_DIR$/src/game/AIPlayer.java" />
+        <option value="$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java" />
       </list>
     </option>
   </component>
@@ -340,27 +348,19 @@
             <path>
               <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="342PitchProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="TestSuite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="342PitchProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
             </path>
           </expand>
           <select />
@@ -370,6 +370,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="342pitchproject" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -381,13 +386,13 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551689674317" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551692571260" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -459,6 +464,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AIPlayerTest.calculateBestBid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="342PitchProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestSuite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestSuite" />
+      <option name="MAIN_CLASS_NAME" value="TestSuite.AIPlayerTest" />
+      <option name="METHOD_NAME" value="calculateBestBid" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All Tests" type="JUnit" factoryName="JUnit">
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -484,26 +509,6 @@
       <option name="PACKAGE_NAME" value="TestSuite" />
       <option name="MAIN_CLASS_NAME" value="TestSuite.CardTest" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CardTest.changeCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="342PitchProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TestSuite.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="TestSuite" />
-      <option name="MAIN_CLASS_NAME" value="TestSuite.CardTest" />
-      <option name="METHOD_NAME" value="changeCard" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -604,18 +609,18 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All Tests" />
       <item itemvalue="JUnit.CardTest" />
-      <item itemvalue="JUnit.CardTest.changeCard" />
       <item itemvalue="JUnit.CardTest.testConstructor" />
       <item itemvalue="JUnit.DeckTest" />
       <item itemvalue="JUnit.PlayerTest" />
+      <item itemvalue="JUnit.AIPlayerTest.calculateBestBid" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AIPlayerTest.calculateBestBid" />
         <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.CardTest" />
         <item itemvalue="JUnit.DeckTest" />
         <item itemvalue="JUnit.CardTest.testConstructor" />
-        <item itemvalue="JUnit.CardTest.changeCard" />
       </list>
     </recent_temporary>
   </component>
@@ -634,34 +639,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests - 2019.03.04 at 02h 30m 20s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 27m 30s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 33m 12s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 27m 47s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 36m 17s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 30m 23s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 39m 14s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 33m 25s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 40m 26s.xml">
+    <history-entry file="AIPlayerTest_calculateBestBid - 2019.03.04 at 03h 36m 46s.xml">
+      <configuration name="AIPlayerTest.calculateBestBid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AIPlayerTest_calculateBestBid - 2019.03.04 at 03h 37m 18s.xml">
+      <configuration name="AIPlayerTest.calculateBestBid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AIPlayerTest_calculateBestBid - 2019.03.04 at 03h 38m 30s.xml">
+      <configuration name="AIPlayerTest.calculateBestBid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.03.04 at 03h 38m 40s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 43m 27s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 39m 17s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 45m 57s.xml">
-      <configuration name="All Tests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 47m 58s.xml">
-      <configuration name="All Tests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 53m 50s.xml">
-      <configuration name="All Tests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 02h 54m 18s.xml">
+    <history-entry file="All_Tests - 2019.03.04 at 03h 39m 45s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -681,7 +686,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.08061224" />
-      <window_info active="true" anchor="bottom" x="2400" y="-1487" width="700" height="790" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
+      <window_info active="true" anchor="bottom" x="2388" y="-1487" width="700" height="790" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24919786" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -721,15 +726,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/honors_spade-14.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/JD.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/JH.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets/PlayingCards/KC.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -977,47 +973,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/PitchScoreCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/PitchDealer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/AIPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="282" selection-start-line="282" selection-end-line="282" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="242" column="11" selection-start-line="242" selection-start-column="11" selection-end-line="242" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Pitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="542" column="29" selection-start-line="542" selection-start-column="19" selection-end-line="542" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1034,18 +993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestSuite/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="98" column="38" lean-forward="true" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4254#4255#0" expanded="true" />
-            <element signature="e#4353#4354#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestSuite/PitchTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -1057,6 +1004,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Pitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="515" selection-start-line="515" selection-end-line="515" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/342PitchProject/game/Main.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#5548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/production/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestSuite/PitchScoreCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1064,10 +1037,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/342pitchproject.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="39" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestSuite/CardTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-567">
+        <state relative-caret-position="-539">
           <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestSuite/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1389">
+          <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4254#4255#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestSuite/DeckTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1464#1465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2457">
+          <caret line="239" column="27" selection-start-line="239" selection-start-column="19" selection-end-line="239" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/PitchScoreCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/AIPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="234" selection-start-line="234" selection-end-line="234" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1076,19 +1107,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestSuite/AIPlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestSuite/DeckTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        <state relative-caret-position="281">
+          <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1447#1448#0" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#2422#2423#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1099,7 +1125,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>JavaFXApp</last-edited>
+          <last-edited>342PitchProject</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
