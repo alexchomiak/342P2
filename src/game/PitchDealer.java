@@ -8,7 +8,7 @@ public class PitchDealer implements Dealer {
     private Deck deck;
 
 
-    PitchDealer() {
+    public PitchDealer() {
         deck = new Deck(null);
         initializeDeck();
     }
@@ -33,15 +33,18 @@ public class PitchDealer implements Dealer {
         }
     }
 
-    void resetDeck() {
+    public void resetDeck() {
         deck.clearDeck();
         initializeDeck();
     }
 
 
+
     public ArrayList<Card> dealHand(){
         Random rand = new Random();
         ArrayList<Card> returnHand = new ArrayList<Card>();
+
+        if(deck.getCards().size() < 6) resetDeck();
 
         Collections.shuffle(deck.getCards());
         for(int i = 0; i < 6; i++) {
