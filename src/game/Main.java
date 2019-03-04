@@ -198,7 +198,7 @@ public class Main extends Application  {
         this.twoPlayers = twoPlayers;
 
         mainMenu = new Scene(layout,windowWidth,windowHeight);
-        mainMenu.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        mainMenu.getStylesheets().add(getClass().getResource("/Assets/styles.css").toExternalForm());
 
     }
 

@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +12,6 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import static game.PitchConstants.*;
 
@@ -542,7 +540,7 @@ public class Pitch implements DealerType{
 
 
         gameWindow = new Scene(layout,window.getWidth(),window.getHeight());
-        gameWindow.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        gameWindow.getStylesheets().add(getClass().getResource("/Assets/styles.css").toExternalForm());
 
 
 
