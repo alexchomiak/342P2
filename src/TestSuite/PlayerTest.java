@@ -77,7 +77,11 @@ class PlayerTest {
 
     @Test
     void handleBid() {
-
+        tester.handleBid(2);
+        assertAll("Handle bid updates player correctly",
+                () -> assertEquals(2,tester.getCurrentBid(),"Bid value updated correctly"),
+                () -> assertTrue(tester.getBidded(),"Bidded bool updated correctly")
+        );
     }
 
     @Test
@@ -89,6 +93,7 @@ class PlayerTest {
         assertAll("Test getter for won tricks (correct deck returned)",
                 () -> assertEquals(10, tester.getTricks().getCards().size(), "Correct size of returned deck"),
                 () -> {
+                    //loop through each card and make sure it is correct
                     for(int i = 0; i < 10; i++) {
                         Card c = tester.getTricks().getCards().get(i);
                         assertTrue(c.getRank() == i + 1 && c.getFace() == 'S', "Correct card at index " + Integer.toString(i));
@@ -99,15 +104,16 @@ class PlayerTest {
 
     @Test
     void getHand() {
-        for(int i = 1; i < 11; i++) {
+        for(int i = 1; i < 7; i++) {
             Card c = new Card(null,i,'S',false);
             tester.giveCard(c);
         }
 
         assertAll("Test getter for hand (correct deck returned)",
-                () -> assertEquals(10,tester.getHand().getCards().size(),"Correct size of returned deck"),
+                () -> assertEquals(6,tester.getHand().getCards().size(),"Correct size of returned deck"),
                 () -> {
-                    for(int i = 0; i < 10; i++) {
+                    for(int i = 0; i < 6; i++) {
+                        //loop through each card and make sure it is correct
                         Card c = tester.getHand().getCards().get(i);
                         assertTrue(c.getRank() == i + 1 && c.getFace() == 'S', "Correct card at index " + Integer.toString(i));
                     }

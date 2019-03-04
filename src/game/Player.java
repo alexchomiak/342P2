@@ -157,8 +157,10 @@ public class Player {
         madeBid = true;
         currentBid = bid;
 
+        if(parent.getGameStarted() != true) return;
+
         parent.getCurrentBids().set(playerNumber - 1,bid);
-        parent.getScoreboard().setBids(parent.getCurrentBids());
+        if(parent.getScoreboard() != null) parent.getScoreboard().setBids(parent.getCurrentBids());
 
         if(!nextPlayer.getBidded()) nextPlayer.makeBid();
         if(playerNumber == 1 && currentBid != 0) {
@@ -238,10 +240,10 @@ public class Player {
     public void setPlayerNumber(int i){this.playerNumber = i;}
     public int getPlayerNumber(){return this.playerNumber;}
 
-    void setNextPlayer(Player p) {
+    public void setNextPlayer(Player p) {
         this.nextPlayer = p;
     }
-    Player getNextPlayer(){return this.nextPlayer;}
+    public Player getNextPlayer(){return this.nextPlayer;}
 
     public void setCurrentBid(int currentBid) {
         this.currentBid = currentBid;

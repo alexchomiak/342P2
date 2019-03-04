@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,6 +32,7 @@ public class Pitch implements DealerType{
     private ArrayList<AIPlayer> computerPlayers;
 
 
+
     //game elements
     private Deck gameField;
     private Deck currentTrick;
@@ -54,6 +56,7 @@ public class Pitch implements DealerType{
 
     //gamestate managers
     private boolean bidWindowOpen = false;
+    private boolean gameStarted = false;
     private boolean roundInProgress = false;
     private boolean roundEnded = false;
     private boolean roundSummaryInProgress = false;
@@ -95,12 +98,14 @@ public class Pitch implements DealerType{
     public BorderPane getLayout(){return this.layout;}
     public StackPane getCardStack(){return this.cardStack;}
     public Scoreboard getScoreboard(){return this.scoreboard;}
+    public boolean getGameStarted(){return this.gameStarted;}
+    public Deck getGameField(){return this.gameField;}
 
 
     ArrayList<Integer> getCurrentScores() {return this.currentScores;}
     ArrayList<Integer> getCurrentBids() {return this.currentBids;}
 
-    int getPlayerCount() {return this.playerCount;}
+    public int getPlayerCount() {return this.playerCount;}
 
     public PitchDealer createDealer(){
         return new PitchDealer();
@@ -137,8 +142,12 @@ public class Pitch implements DealerType{
             //listener that updates gameField stack in the middle of the screem
             @Override
             public void onChanged(ListChangeListener.Change<? extends Node> c) {
+
                 //update deck
                 cardStack = new StackPane();
+
+                if(!gameStarted) return;
+
                 for(int i = 0; i < gameField.getCards().size(); i++) {
                     //intialize card to be added to stack
                     Card card = new Card(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
@@ -150,6 +159,7 @@ public class Pitch implements DealerType{
                 }
                 //set alignment to center
                 cardStack.setAlignment(Pos.CENTER);
+
                 //move to center of screen
                 layout.setCenter(cardStack);
 
@@ -189,7 +199,7 @@ public class Pitch implements DealerType{
 
     }
 
-    void resetGameField() {
+    public void resetGameField() {
         if( cardStack != null) {
             gameField.clearDeck();
             cardStack.getChildren().clear();
@@ -199,7 +209,7 @@ public class Pitch implements DealerType{
 
 
 
-    void startTrick(int num) {
+    public void startTrick(int num) {
         resetPlayers(false);
         currentTrick.clearDeck();
 
@@ -276,7 +286,7 @@ public class Pitch implements DealerType{
 
 
 
-    void resetPlayers(boolean cleardeck) {
+    public void resetPlayers(boolean cleardeck) {
         Player iterator = startPlayer;
         for(int i = 0; i < playerCount; i++) {
             iterator.reset();
@@ -286,7 +296,7 @@ public class Pitch implements DealerType{
         }
     }
 
-    void resetPlayerBids() {
+    public void resetPlayerBids() {
         Player iterator = getStartPlayer();
         for(int i = 0; i < playerCount; i++) {
             iterator.resetBids();
@@ -294,7 +304,7 @@ public class Pitch implements DealerType{
         }
     }
 
-    void dealPlayers() {
+    public void dealPlayers() {
         if(pitchDealer.getDeck().getCards().size() < (playerCount * 6)) {
             System.out.println("resetting " + Integer.toString(pitchDealer.getDeck().getCards().size()) + " Round: " + Integer.toString(roundCount));
 
@@ -427,6 +437,7 @@ public class Pitch implements DealerType{
 
     }
     void start() {
+        gameStarted = true;
 
         //initialize game scene and set window to game window
         intializeGameScene();
@@ -546,6 +557,9 @@ public class Pitch implements DealerType{
 
 
     public void end() {
+        scoreboard.setScores(this.currentScores);
+        scoreboard.hideExitButton();
+
         //End game Scene
         if(gameThread != null) gameThread.stop();
         if(roundThread != null) roundThread.stop();
@@ -569,13 +583,21 @@ public class Pitch implements DealerType{
         }
 
         Label farewell = new Label("Thank you for playing Pitch!");
-        farewell.setStyle("-fx-font: 18px arial");
+        farewell.setStyle("-fx-font: 24px arial");
         farewell.setTextFill(textColor);
 
         Label playersThatWon = new Label();
+        playersThatWon.setTextFill(textColor);
+
         //set players that won
         if(winningPlayerIndexes.size() == 1) {
             playersThatWon.setText("Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " for winning this game of Pitch!");
+            switch(winningPlayerIndexes.get(0)) {
+                case 0: playersThatWon.setTextFill(player1); break;
+                case 1: playersThatWon.setTextFill(player2); break;
+                case 2: playersThatWon.setTextFill(player3); break;
+                case 3: playersThatWon.setTextFill(player4); break;
+            }
         }
         else {
             String prompt = "Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " & ";
@@ -585,8 +607,7 @@ public class Pitch implements DealerType{
             }
             prompt += "for winning this game of Pitch!";
         }
-        playersThatWon.setStyle("-fx-font: 12px arial");
-        playersThatWon.setTextFill(textColor);
+        playersThatWon.setStyle("-fx-font: 16px arial");
 
         Button exit = new Button("Exit Application");
         exit.setOnAction(e -> window.close());

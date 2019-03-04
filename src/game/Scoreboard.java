@@ -26,6 +26,8 @@ public class Scoreboard {
     Label turnSubjectPrompt;
     Label turnPrompt;
 
+    private Button exitGame;
+
     ArrayList<Label> playerBids;
     ArrayList<Label> playerScores;
     ImageView trumpView;
@@ -38,7 +40,7 @@ public class Scoreboard {
         displayPane.setPadding(new Insets(20,20,20,20));
 
 
-        Button exitGame = new Button("Exit Application");
+        this.exitGame = new Button("Exit Application");
         exitGame.setOnAction(e -> {
             window.close();
         });
@@ -233,5 +235,8 @@ public class Scoreboard {
 
 
     public FlowPane View() { return this.displayPane;}
+
+    public void hideExitButton(){this.exitGame.setOpacity(0.0);}
+    public void showExitButton(){this.exitGame.setOpacity(1.0);}
 
 }
