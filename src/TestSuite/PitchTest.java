@@ -17,12 +17,14 @@ class PitchTest {
 
     @BeforeEach
     void initializeTest() {
-        testGame = new Pitch(null,4,0,0);
+        //initialize pitch game instance
+        testGame = new Pitch(null,4,null);
     }
 
 
     @Test
     void createDealer() {
+        //test createDealer implementation
         PitchDealer test = testGame.createDealer();
         assertAll("Test proper dealer was created",
                 () -> assertEquals(PitchDealer.class, test.getClass(), "Correct type of dealer initialized"),
@@ -32,6 +34,7 @@ class PitchTest {
 
     @Test
     void resetGameField() {
+        //test reset game field function
         for(int i = 1; i < 11; i++) {
             testGame.getGameField().addCard(new Card(null,i,'S',false,false));
         }
@@ -43,6 +46,9 @@ class PitchTest {
 
     @Test
     void resetPlayers() {
+        //test reset players functions
+
+        //loop through each player and give them cards
         Player iterator = testGame.getPlayer();
         for(int i = 0; i < testGame.getPlayerCount(); i++) {
             for(int j = 1; j < 11; j++) {
@@ -51,7 +57,11 @@ class PitchTest {
             }
             iterator = iterator.getNextPlayer();
         }
+
+        //reset players
         testGame.resetPlayers(true);
+
+        //assert they are correctly reset
         assertAll("Players correctly reset",
                 () -> {
                     Player tester = testGame.getPlayer();
@@ -68,15 +78,22 @@ class PitchTest {
                 );
     }
 
+
     @Test
     void resetPlayerBids() {
+        //test resetplayer bids function
+
+        //loop through each player and give them cards
         Player iterator = testGame.getPlayer();
         for(int i = 0; i < testGame.getPlayerCount(); i++) {
             iterator.handleBid(2);
             iterator = iterator.getNextPlayer();
         }
 
+        //reset player bids
         testGame.resetPlayerBids();
+
+        //assert player bid state and reset bids are correct
         assertAll("Player bids and bid state correctly reset",
                 () -> {
                     Player tester = testGame.getPlayer();
@@ -95,6 +112,7 @@ class PitchTest {
 
     @Test
     void dealPlayers() {
+        //test dealPlayers function
         testGame.dealPlayers();
         assertAll("All players have a deck size of 6",
                 () -> {

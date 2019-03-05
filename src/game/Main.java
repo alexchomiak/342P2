@@ -15,12 +15,9 @@ import static game.PitchConstants.*;
 
 public class Main extends Application  {
 
-    private final int windowWidth = 1000;
-    private final int windowHeight = 800;
 
     private Stage window;
     private Scene mainMenu, gameWindow;
-    private Button button;
 
     private Button twoPlayers;
     private Button threePlayers;
@@ -56,7 +53,7 @@ public class Main extends Application  {
     }
 
 
-    void setPlayerCount(int n){
+    public void setPlayerCount(int n){
         //update player count
         this.players = n;
         currentPlayerCountSelection.setText("Current Selection: " + Integer.toString(n) + " Players");
@@ -64,7 +61,7 @@ public class Main extends Application  {
 
 
     Label currentPlayerCountSelection;
-    void initializeMenuScene() {
+    public void initializeMenuScene() {
         //Greeting label
         Label Greeting = new Label("Welcome to the Pitch Game!");
         //set greeting text color
@@ -92,7 +89,7 @@ public class Main extends Application  {
         Button threePlayers = new Button("3 Players");
         Button fourPlayers = new Button("4 Players");
         Button exitButton = new Button("Exit Application");
-        Button startButton = new Button("Start Application");
+        Button startButton = new Button("Start Game");
 
         //initialize borderPane
         BorderPane layout = new BorderPane();
@@ -180,10 +177,7 @@ public class Main extends Application  {
         //start event handler
         startButton.setOnAction(e -> {
             //instantiate an instance of Pitch
-            Pitch game = new Pitch(window,players,windowWidth,windowHeight);
-
-            //stop rotating card animation
-            timer.stop();
+            Pitch game = new Pitch(window,players,mainMenu);
 
             //start pitch game
             game.start();
@@ -210,7 +204,7 @@ public class Main extends Application  {
 
 
 
-    void exitProgram() {
+    public void exitProgram() {
         window.close();
     }
 

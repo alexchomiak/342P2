@@ -373,7 +373,7 @@ public class PitchScoreCalculator {
     }
 
 
-    Color getColor(int playerIndex) {
+    public Color getColor(int playerIndex) {
         //Utility function for getting player color and text coloring
         switch(playerIndex) {
             case 0: return player1;

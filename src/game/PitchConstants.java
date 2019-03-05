@@ -8,6 +8,8 @@ public final class PitchConstants {
     }
 
     //game constants
+    public static final int windowWidth = 1000;
+    public static final int windowHeight = 800;
     public static final int cardImageWidth = 90;
     public static final int cardImageHeight = 160;
     public static final int hoverAnimationOffset = 30;

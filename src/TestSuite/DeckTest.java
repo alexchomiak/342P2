@@ -21,12 +21,14 @@ class DeckTest {
 
     @BeforeEach
     void initializeTest() {
+        //initialize deck before each test
         testPane = new FlowPane();
         testDeck = new Deck(testPane);
     }
 
     @Test
     void addCard() {
+        //test addcard for deck
         Card test = new Card(null,1,'S',false,false);
         testDeck.addCard(test);
         assertAll("Deck correctly added card",
@@ -38,6 +40,7 @@ class DeckTest {
 
     @Test
     void removeCard() {
+        //test removecard for deck
         Card test = new Card(null,1,'S',false,false);
         testDeck.addCard(test);
         testDeck.removeCard(test);
@@ -46,11 +49,13 @@ class DeckTest {
 
     @Test
     void getDisplayPane() {
+        //test getdisplaypane
         assertEquals(testPane,testDeck.getDisplayPane(),"Returns correct display pane");
     }
 
     @Test
     void moveCardTo() {
+        //test movecard function of deck
         Card test = new Card(null,1,'S',false,false);
         Deck destination = new Deck(null);
         testDeck.addCard(test);
@@ -65,6 +70,7 @@ class DeckTest {
 
     @Test
     void clearDeck() {
+        //test cleardeck of deck function
         for(int i = 1; i < 14; i++) {
             testDeck.addCard(new Card(null,i,'S',false,false));
         }

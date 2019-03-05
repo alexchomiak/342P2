@@ -24,7 +24,7 @@ class PitchScoreCalculatorTest {
 
     @BeforeEach
     public  void initializeTest() {
-        testGame = new Pitch(null,3,0,0);
+        testGame = new Pitch(null,3,null);
         testCalculator = new PitchScoreCalculator();
         player1 = testGame.getStartPlayer();
         player2 = player1.getNextPlayer();
@@ -33,6 +33,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateTrickWinnerTrumpShouldWin() {
+        //test that player should win if they are only trump suit
         testGame.setCurrentTrumpSuit('S');
 
         //player 1 card
@@ -47,6 +48,7 @@ class PitchScoreCalculatorTest {
     }
     @Test
     void calculateTrickWinnerLeadShouldWin() {
+        //test that winner should win if they are only lead suit and no trump is present
         testGame.setCurrentTrumpSuit('S');
         testGame.setCurrentLeadSuit('D');
 
@@ -63,6 +65,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateTrickWinnerHighestRankTrump() {
+        //test that highest ranked trump card should win
         testGame.setCurrentTrumpSuit('S');
         //player 1 card
         testGame.getCurrentTrick().addCard(new Card(null,13,'S',false,false));
@@ -76,6 +79,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateTrickWinnerHighestRankLead() {
+        //test that highest ranked lead card should win
         testGame.setCurrentTrumpSuit('S');
         testGame.setCurrentLeadSuit('D');
 
@@ -92,6 +96,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateRoundScorePlayerBid() {
+        //test that player1 should have a score of 4 with all tricks and a bid of 2
         testGame.setCurrentTrumpSuit('S');
 
         //make player 1 have a bid of 2
@@ -120,6 +125,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateRoundScorePlayerDidNotBid() {
+        //test that player1 should have a score of 0 even though they won all tricks because they passed
         testGame.setCurrentTrumpSuit('S');
 
         //make player 1 pass
@@ -150,6 +156,7 @@ class PitchScoreCalculatorTest {
 
     @Test
     void calculateRoundScorePlayerBidSmudge() {
+        //test that player1 should have a score of 5 since they won all tricks, categories and bid smudge
         testGame.setCurrentTrumpSuit('S');
 
         //make player 1 have a bid of 5 (Smudge)

@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -16,29 +17,26 @@ import java.util.ArrayList;
 import static game.PitchConstants.*;
 
 public class Pitch implements DealerType{
+    //ui elements
     private Stage window;
     private Scene gameWindow;
     private BorderPane layout;
+    private Scene mainMenu;
 
-    private static  int windowWidth = 0;
-    private static  int windowHeight = 0;
-
+    //player count variable
     private int playerCount = 0;
 
+    //current player
     private Player player;
 
+    //list of AI players
     private ArrayList<AIPlayer> computerPlayers;
-
-
 
     //game elements
     private Deck gameField;
     private Deck currentTrick;
     private Deck playedCards;
 
-
-    //timeline
-    Timeline delay;
 
     //display elements
     private FlowPane placeholder;
@@ -77,48 +75,23 @@ public class Pitch implements DealerType{
     private AnimationTimer roundThread;
     private AnimationTimer trickThread;
 
-
-    public void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
-    public  void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
-    public void setTrickWinningIndex(int i){this.trickWinningIndex = i;}
-    public int getTrickNum(){return this.currentTrickNumber;}
-    public  char getCurrentTrumpSuit(){return this.currentTrumpSuit;}
-    public  char getCurrentLeadSuit(){return this.currentLeadSuit;}
-    public void setCurrentTrick(Deck d){this.currentTrick = d;}
-    public Deck getCurrentTrick(){return this.currentTrick;}
-    public  Player getStartPlayer(){return this.startPlayer;}
-    public Player getPlayer(){return this.player;}
-    public void setCurrentPlayer(Player p){this.currentPlayer = p;}
-    public  Player getCurrentPlayer(){return this.currentPlayer;}
-    public void setRoundSummaryInProgress(boolean s){ this.roundSummaryInProgress = s;}
-    public  void setBidWindowOpen(boolean s) { this.bidWindowOpen = s;}
-    public  boolean getBidWindowOpen() {return this.bidWindowOpen;}
-    public BorderPane getLayout(){return this.layout;}
-    public StackPane getCardStack(){return this.cardStack;}
-    public Scoreboard getScoreboard(){return this.scoreboard;}
-    public boolean getGameStarted(){return this.gameStarted;}
-    public Deck getGameField(){return this.gameField;}
-
-
-    public ArrayList<Integer> getCurrentScores() {return this.currentScores;}
-    public ArrayList<Integer> getCurrentBids() {return this.currentBids;}
-
-    public int getPlayerCount() {return this.playerCount;}
-
+    //createDealer implementation
     public PitchDealer createDealer(){
         return new PitchDealer();
     }
 
 
-    public Pitch(Stage window, int playerCount, int windowWidth, int windowHeight) {
+
+    public Pitch(Stage window, int playerCount, Scene mainMenu) {
+        //initialize datamembers
+        this.mainMenu = mainMenu;
         this.window = window;
         this.playerCount = playerCount;
-        this.windowWidth = windowWidth;
-        this.windowHeight = windowHeight;
 
+        //initialize game scene and set window to game window
+        intializeGameScene();
 
-
-
+        //initialize scorecalculator
         scoreCalculator = new PitchScoreCalculator();
 
         //placeholder flowpane for Deck objects that interact with gui
@@ -127,7 +100,7 @@ public class Pitch implements DealerType{
         currentTrick = new Deck(placeholder);
         playedCards = new Deck(null);
 
-
+        //initialize current bids array
         currentBids = new ArrayList<Integer>();
         currentScores = new ArrayList<Integer>();
         for(int i = 0; i < playerCount; i++){
@@ -136,20 +109,27 @@ public class Pitch implements DealerType{
         }
 
 
+        //add event listener to update card stack display in center of screen when it is changed
         placeholder.getChildren().addListener(new ListChangeListener<Node>() {
             //listener that updates gameField stack in the middle of the screem
             @Override
             public void onChanged(ListChangeListener.Change<? extends Node> c) {
+                //rerender deck every time list is changed
 
                 //update deck
                 cardStack = new StackPane();
 
+                //if game is already started, skip rerender
                 if(!gameStarted) return;
 
                 for(int i = 0; i < gameField.getCards().size(); i++) {
                     //intialize card to be added to stack
                     Card card = new Card(null,gameField.getCards().get(i).getRank(),gameField.getCards().get(i).getFace(),false);
+
+                    //set card scale
                     card.setScale(1.25);
+
+                    //rotate card
                     card.rotate(45 * i);
 
                     //push new rotated stack
@@ -160,11 +140,8 @@ public class Pitch implements DealerType{
 
                 //move to center of screen
                 layout.setCenter(cardStack);
-
             }
         });
-
-
 
         //intialize player instances
         player = new Player(gameField,currentTrick,this);
@@ -186,35 +163,92 @@ public class Pitch implements DealerType{
         }
         computerPlayers.get(computerPlayers.size() - 1).setNextPlayer(player);
 
-
-
-
-
-
+        //create game dealer
         pitchDealer = createDealer();
-
-
-
     }
 
+
     public void resetGameField() {
+        //reset game field
         if( cardStack != null) {
+            //clear gamefield deck
             gameField.clearDeck();
+
+            //clear cardstack pane
             cardStack.getChildren().clear();
+
+            //clear placeholder flowpane
             placeholder.getChildren().clear();
         }
     }
 
 
+    public void resetPlayers(boolean cleardeck) {
+        //iterate through each player and reset them
+        Player iterator = startPlayer;
+        for(int i = 0; i < playerCount; i++) {
+            //reset turn state booleans
+            iterator.reset();
+
+            //if set to cleardeck, clear each deck iterator has
+            if(cleardeck) iterator.getHand().clearDeck();
+            if(cleardeck) iterator.getTricks().clearDeck();
+
+            //go to next player
+            iterator = iterator.getNextPlayer();
+        }
+    }
+
+
+    public void resetPlayerBids() {
+        //reset player bids
+        Player iterator = getStartPlayer();
+        for(int i = 0; i < playerCount; i++) {
+            //reset bid state and bids
+            iterator.resetBids();
+
+            //iterate to next player
+            iterator = iterator.getNextPlayer();
+        }
+    }
+
+
+    public void dealPlayers() {
+        //reset player decks
+        resetPlayers(true);
+
+        //give all players their cards
+        Player iterator = startPlayer;
+        while(iterator.getHand().getCards().size() == 0) {
+            //iterate through each player and deal them cards
+            ArrayList<Card> dealtHand = pitchDealer.dealHand();
+
+            for(int i = 0; i < dealtHand.size(); i++) {
+                //give each card in dealt hand to player
+                iterator.giveCard(dealtHand.get(i));
+            }
+
+            //iterate to next player
+            iterator = iterator.getNextPlayer();
+        }
+    }
+
 
     public void startTrick(int num) {
+        //reset players before trick
         resetPlayers(false);
+
+        //clear previous trick
         currentTrick.clearDeck();
 
-
+        //set current player to startplayer
         currentPlayer = startPlayer;
+
+        //set trick in progress game state to true
         trickInProgress = true;
 
+
+        //set game to this
         Pitch game = this;
 
 
@@ -226,130 +260,101 @@ public class Pitch implements DealerType{
         trickThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
-
+                //if current player did not start turn, start their turn
                 if(!currentPlayer.getTurnStarted()) {
-                    //timeDelay(100);
+                    //start turn
                     currentPlayer.startTurn(currentPlayer == startPlayer);
                 }
 
+                //boolean for all players completed trick
                 boolean allCompleted = true;
                 for(int i = 0; i < computerPlayers.size(); i++) {
+                    //calculate if all AI players completed trick
                     if(computerPlayers.get(i).getCompleted() != true) allCompleted = false;
                 }
+
+                //all completed = player completed and all AI players completed
                 allCompleted = allCompleted && player.getCompleted();
 
-
-
-
-                if(trickInProgress && allCompleted && currentPlayer.getTurnStarted()) {
-
+                //if trick in progress and all players completed, and curren
+                if(trickInProgress && allCompleted) {
+                    //set trick in progress to false
                     trickInProgress = false;
 
-
-                    //calculate score
+                    //calculate trick winner
                     startPlayer = scoreCalculator.calculateTrickWinner(game);
 
+                    //give cards from trick to winner
                     for(int i = 0 ; i < game.getCurrentTrick().getCards().size(); i++) {
                         startPlayer.addWonCard(currentTrick.getCards().get(i));
                     }
 
+                    //set views as current trick
                     ArrayList<Card> views = currentTrick.getCards();
 
-
-                    setPrompt(startPlayer.playerNumber);
+                    //add trick view to trickList
                     trickList.addToList(views,trickWinningIndex, startPlayer.playerNumber);
 
+                    //update prompt for next start player
+                    setPrompt(startPlayer.playerNumber);
 
-
-
-
-
-
+                    //stop trick thread
                     this.stop();
                 }
 
             }
         };
+
+        //start trick
         trickThread.start();
     }
 
 
-
-
     void startBetting() {
+        //start betting process
         startPlayer.makeBid();
     }
 
 
-
-
-    public void resetPlayers(boolean cleardeck) {
-        Player iterator = startPlayer;
-        for(int i = 0; i < playerCount; i++) {
-            iterator.reset();
-            if(cleardeck) iterator.getHand().clearDeck();
-            if(cleardeck) iterator.getTricks().clearDeck();
-            iterator = iterator.getNextPlayer();
-        }
-    }
-
-    public void resetPlayerBids() {
-        Player iterator = getStartPlayer();
-        for(int i = 0; i < playerCount; i++) {
-            iterator.resetBids();
-            iterator = iterator.getNextPlayer();
-        }
-    }
-
-    public void dealPlayers() {
-        if(pitchDealer.getDeck().getCards().size() < (playerCount * 6)) {
-            System.out.println("resetting " + Integer.toString(pitchDealer.getDeck().getCards().size()) + " Round: " + Integer.toString(roundCount));
-
-            pitchDealer.resetDeck();
-
-        }
-
-
-        resetPlayers(true);
-
-
-
-
-
-        //give all players their cards
-        Player iterator = startPlayer;
-        while(iterator.getHand().getCards().size() == 0) {
-
-            ArrayList<Card> dealtHand = pitchDealer.dealHand();
-            for(int i = 0; i < dealtHand.size(); i++) {
-
-                iterator.giveCard(dealtHand.get(i));
-            }
-            iterator = iterator.getNextPlayer();
-        }
-    }
-
     void startRound() {
+        //set startPlayer to player
         startPlayer = player;
+
+        //reset player bids
         resetPlayerBids();
+
+        //update bids on scoreboard
         scoreboard.setBids(currentBids);
 
+        //empty prompt
         setPrompt(0);
+
+        //update scoreboard
         scoreboard.setScores(this.currentScores);
+
+        //reset trump truit
         scoreboard.setTrumpSuit('E');
+
+        //reset turn prompt
         scoreboard.setTurnPrompt(0);
+
+        //deal cards to players
         dealPlayers();
+
+        //set bettingInProgress gamestate
         bettingInProgress = true;
+
+        //start betting progress
         startBetting();
 
+        //set current trick number to 0
         currentTrickNumber = 0;
 
-
+        //set round in progress to true
         roundInProgress = true;
 
-
+        //set game variable
         Pitch game = this;
-
 
         //start round state handling loop
         //watches for changes in round state,
@@ -359,121 +364,153 @@ public class Pitch implements DealerType{
 
             @Override
             public void handle(long now) {
+                //if betting in progress, watch for betting state changes
                 if(bettingInProgress) {
+                    //check if all players betted
                     boolean allPlayersBetted = true;
+
                     for(int i = 0; i < computerPlayers.size(); i++) {
+                        //loop through each ai player checking if they betted
                         if(computerPlayers.get(i).getBidded() != true) allPlayersBetted = false;
                     }
+
+                    //allPlayers betted = player betted & all ai players betted
                     allPlayersBetted = allPlayersBetted && player.getBidded();
 
+
+                    //if all players betted, handle logic
                     if(allPlayersBetted){
+                        //check if all players passed
                         boolean allPassed = true;
 
-
+                        //loop through each player checking if their bid was 0
                         Player iterator = startPlayer;
                         for(int i = 0; i < playerCount; i++) {
+                            //if bid != 0, all passed is set to false
                             if(iterator.getCurrentBid() != 0) allPassed = false;
 
+                            //iterate to next player
                             iterator = iterator.getNextPlayer();
                         }
 
+                        //if all passed, restart round, which will restart the betting process
                         if(allPassed) {
                             roundInProgress = false;
                             this.stop();
                         } else {
+                            //other wise find max bid and
                             //set starting player, find max index of bid
 
+                            //iterate over each player, find max bid
                             iterator = startPlayer;
-
                             int maxBid = iterator.getCurrentBid();
+
                             for(int i = 0; i < playerCount; i++) {
-                                if(iterator.getCurrentBid() > startPlayer.getCurrentBid()) startPlayer = iterator;
+                                //if iterators bid is greater than max bid found
+                                if(iterator.getCurrentBid() > maxBid) {
+                                    //update maxbid found
+                                    maxBid = iterator.getCurrentBid();
+
+                                    //set start player to iterator
+                                    startPlayer = iterator;
+                                }
+
+                                //iterate to next player
                                 iterator = iterator.getNextPlayer();
                             }
+
+                            //set betting in progress to false
                             bettingInProgress = false;
                         }
 
 
                     }
 
-
+                    //return from handling to prevent logic below from being executed
                     return;
                 }
 
 
 
+                //if betting is not in progress, start tricks
                 if(!trickInProgress && !bettingInProgress && !roundSummaryInProgress && roundInProgress){
+                    //set bidWindowOpen to false
                     bidWindowOpen = false;
 
                     //check if player hands empty to signify round over, if so calculate scores
                     if(startPlayer.getHand().getCards().size() == 0) {
+
+                        //calculate round score and set round summary to center pane
+                        layout.setCenter(scoreCalculator.calculateRoundScore(game));
+
+                        //set round in progress to false
                         roundInProgress = false;
 
-                        layout.setCenter(scoreCalculator.calculateRoundScore(game));
+                        //set roundEnded to true
                         roundEnded = true;
 
+                        //stop round timer
                         this.stop();
                     }
                     //otherwise calculate the winner of the current trick, and set them as the start for the next trick
                     //then start the next trick
                     if(startPlayer.getHand().getCards().size() > 0) {
-
-
+                        //increment trick number count
                         currentTrickNumber++;
+
+                        //set players hand to be unselectable
                         player.getHand().setSelectable(false);
+
+                        //reset game field
                         resetGameField();
 
+                        //start trick
                         startTrick(currentTrickNumber);
                     }
                 }
 
             }
         };
+
+        //start round thread
         roundThread.start();
-
-
     }
+
+
+    public void resetGame() {
+        //End game threads
+        if(gameThread != null) gameThread.stop();
+        if(roundThread != null) roundThread.stop();
+        if(trickThread != null) trickThread.stop();
+
+        //start new pitch instance with same settings
+        Pitch newGame = new Pitch(this.window,this.playerCount,this.mainMenu);
+        newGame.start();
+    }
+
+
     void start() {
+
         gameStarted = true;
 
-        //initialize game scene and set window to game window
-        intializeGameScene();
-        layout.setStyle("-fx-background-image: url('/Assets/background_image.jpg');-fx-background-size: cover;");
-
-        window.setScene(gameWindow);
-
-
-
         //initialize scoreboard instance
-        scoreboard = new Scoreboard(playerCount,window);
+        scoreboard = new Scoreboard(playerCount,this);
         layout.setLeft(scoreboard.View());
 
         trickList = new TrickList();
         layout.setRight(trickList.View());
 
-
         player.display().setHgap(-30);
-        //player.display().setStyle(sideBarStyle);
         layout.setBottom(player.display());
-
-        //layout.setAlignment(scoreboard.View(),Pos.CENTER);
-
-
-
-
 
         //set to round 1
         roundCount++;
         incrementRoundCounter();
 
 
-
         //start game state handling loop,
         //watches for round state change, and will start a new round if round
         //is finished
-
-
-
         gameThread = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -500,94 +537,112 @@ public class Pitch implements DealerType{
             }
         };
 
-
-
+        //start game
         gameThread.start();
 
-        /*
-        while(true) {
-            //startRound
-            //calculateScores
-            //check for winners
-        }
-        */
+        //set window scene
+        window.setScene(gameWindow);
     }
 
+
     private void intializeGameScene() {
+        //intialize layout
         layout = new BorderPane();
 
+        //set layout style
+        layout.setStyle("-fx-background-image: url('/Assets/background_image.jpg');-fx-background-size: cover;");
 
 
+        //initialize topbar
         VBox topBar = new VBox();
+
+        //initialize title label
         Title = new Label("Pitch (Up to a score of " + Integer.toString(scoreLimit) + ")");
+
+        //set title label style
         Title.setStyle("-fx-font: 18px arial");
-        RoundCount = new Label("2");
+
+        //initialize round count label
+        RoundCount = new Label("");
+
+        //initialize prompt label
         Prompt = new Label("");
+
+        //set topbar alignment
         topBar.setAlignment(Pos.CENTER);
 
-
+        //set text fill of labels
         Title.setTextFill(textColor);
         RoundCount.setTextFill(textColor);
         Prompt.setTextFill(textColor);
 
+        //add all objects to topbar
         topBar.getChildren().addAll(Title,RoundCount,Prompt);
 
-        //topBar.setStyle(sideBarStyle);
+        //set layout top to topbar
         layout.setTop(topBar);
 
+        //initialize gameWindow scene with layout
+        gameWindow = new Scene(layout,windowWidth ,windowHeight);
 
-
-
-        gameWindow = new Scene(layout,window.getWidth(),window.getHeight());
+        //set window stylesheet
         gameWindow.getStylesheets().add(getClass().getResource("/Assets/styles.css").toExternalForm());
-
-
-
-
-
-        //layout.getChildren().add(hand);
-
-
-
-
     }
 
 
     public void end() {
+        //update scoreboard
         scoreboard.setScores(this.currentScores);
-        scoreboard.hideExitButton();
 
-        //End game Scene
+        //hide exit & reset button on scoreboard
+        scoreboard.hideExitButton();
+        scoreboard.hideResetButton();
+
+        //End game threads
         if(gameThread != null) gameThread.stop();
         if(roundThread != null) roundThread.stop();
         if(trickThread != null) trickThread.stop();
 
-
+        //intialize vbox for end
         VBox end = new VBox(10);
 
         //Calculate winners
         ArrayList<Integer> winningPlayerIndexes = new ArrayList<Integer>();
+
         int maxScore = 0;
         for(int i = 0; i < playerCount; i++) {
+            //if player > maxscore, reset player indexes
+            //and set max score
             if(currentScores.get(i) > maxScore) {
                 winningPlayerIndexes.clear();
                 maxScore = currentScores.get(i);
             }
 
             if(currentScores.get(i) == maxScore) {
+                //if player score == max score, add player to winning
+                //player indexes
                 winningPlayerIndexes.add(i);
             }
         }
 
+        //initialize farewell label
         Label farewell = new Label("Thank you for playing Pitch!");
+
+        //set farewell style
         farewell.setStyle("-fx-font: 24px arial");
+
+        //set text color
         farewell.setTextFill(textColor);
 
+        //initialize playersThatWon label
         Label playersThatWon = new Label();
+
+        //set text color
         playersThatWon.setTextFill(textColor);
 
         //set players that won
         if(winningPlayerIndexes.size() == 1) {
+            //if one player won the game, set the label accordingly and set text color
             playersThatWon.setText("Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " for winning this game of Pitch!");
             switch(winningPlayerIndexes.get(0)) {
                 case 0: playersThatWon.setTextFill(player1); break;
@@ -597,36 +652,62 @@ public class Pitch implements DealerType{
             }
         }
         else {
+            //otherwise loop through each player that won
+            //and concatenate each player that won to playersthat won string
             String prompt = "Congratulations to Player " + Integer.toString(winningPlayerIndexes.get(0) + 1) + " & ";
+
             for(int i = 1; i < winningPlayerIndexes.size(); i++) {
                 prompt += "Player " + Integer.toString(winningPlayerIndexes.get(i) + 1) + " ";
                 if(i != winningPlayerIndexes.size() - 1) prompt += "& ";
             }
+
             prompt += "for winning this game of Pitch!";
         }
+
+        //set playersThatWon style
         playersThatWon.setStyle("-fx-font: 16px arial");
 
+        //initialize playAgain button
+        Button playAgain = new Button("Play Again");
+
+        //set event listener for play again
+        playAgain.setOnAction(e -> window.setScene(mainMenu));
+
+        //initialize exit button
         Button exit = new Button("Exit Application");
+
+        //set event listener for exit button
         exit.setOnAction(e -> window.close());
 
-        end.getChildren().addAll(farewell,playersThatWon,exit);
+        //add all elements to end vbox
+        end.getChildren().addAll(farewell,playersThatWon,playAgain,exit);
+
+        //set style of end vbox
         end.setStyle(roundSummaryStyle);
+
+        //set alignment of vbox
         end.setAlignment(Pos.CENTER);
+
+        //set layout center to vbox
         layout.setCenter(end);
-
-
     }
 
 
     public void incrementRoundCounter() {
+        //increment roundcounter (updates round count label)
         RoundCount.setText("Round: " + Integer.toString(roundCount));
     }
+
+
     public void setPrompt(int playerWon) {
+        //if playerWon is 0
         if(playerWon == 0) {
+            //empty text for prompt
             Prompt.setText("");
             return;
         }
 
+        //otherwise set prompt text of player that won the trick
         if(playerWon == 1) {
             Prompt.setText("You won the previous trick!");
         }
@@ -635,9 +716,32 @@ public class Pitch implements DealerType{
         }
     }
 
-    public void timeDelay(long t) {
-       try {
-           Thread.sleep(t);
-       } catch(InterruptedException e){}
-    }
+
+    //getters and setters
+
+    public Stage getWindow(){return this.window;}
+    public Scene getMainMenu(){return this.mainMenu;}
+    public void setCurrentTrumpSuit(char s){this.currentTrumpSuit = s;}
+    public  void setCurrentLeadSuit(char s){this.currentLeadSuit = s;}
+    public void setTrickWinningIndex(int i){this.trickWinningIndex = i;}
+    public int getTrickNum(){return this.currentTrickNumber;}
+    public  char getCurrentTrumpSuit(){return this.currentTrumpSuit;}
+    public  char getCurrentLeadSuit(){return this.currentLeadSuit;}
+    public void setCurrentTrick(Deck d){this.currentTrick = d;}
+    public Deck getCurrentTrick(){return this.currentTrick;}
+    public  Player getStartPlayer(){return this.startPlayer;}
+    public Player getPlayer(){return this.player;}
+    public void setCurrentPlayer(Player p){this.currentPlayer = p;}
+    public  Player getCurrentPlayer(){return this.currentPlayer;}
+    public void setRoundSummaryInProgress(boolean s){ this.roundSummaryInProgress = s;}
+    public  void setBidWindowOpen(boolean s) { this.bidWindowOpen = s;}
+    public  boolean getBidWindowOpen() {return this.bidWindowOpen;}
+    public BorderPane getLayout(){return this.layout;}
+    public StackPane getCardStack(){return this.cardStack;}
+    public Scoreboard getScoreboard(){return this.scoreboard;}
+    public boolean getGameStarted(){return this.gameStarted;}
+    public Deck getGameField(){return this.gameField;}
+    public ArrayList<Integer> getCurrentScores() {return this.currentScores;}
+    public ArrayList<Integer> getCurrentBids() {return this.currentBids;}
+    public int getPlayerCount() {return this.playerCount;}
 }

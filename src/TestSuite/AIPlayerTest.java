@@ -24,7 +24,7 @@ class AIPlayerTest {
 
     @BeforeEach
     void initAIPlayer(){
-        testGame = new Pitch(null,4,0,0);
+        testGame = new Pitch(null,4,null);
         tester = new AIPlayer(new Deck(null), new Deck(null),testGame);
         //give tester cards
     }
@@ -42,7 +42,7 @@ class AIPlayerTest {
                 () -> assertEquals(-1, tester.getCurrentBid(), "Default bid set properly"),
                 () -> assertFalse(tester.getTurnStarted(),"Turn state set properly"),
                 () -> assertFalse(tester.getBidded(), "Bid state set properly")
-                );
+        );
     }
 
     @Test
@@ -59,7 +59,7 @@ class AIPlayerTest {
         assertAll("Correct turn state updated after move, and move made correctly",
                 () -> assertTrue(tester.getCompleted(), "Turn state updated correctly"),
                 () -> assertEquals(5,tester.getHand().getCards().size(), "Correct move made")
-                );
+        );
     }
 
     @Test
@@ -77,6 +77,6 @@ class AIPlayerTest {
         assertAll("Test that bid value is set, and bit state set correctly",
                 () -> assertTrue(tester.getCurrentBid() != -1, "Bid value set correctly"),
                 () -> assertTrue(tester.getBidded(), "Bid state set correctly")
-                );
+        );
     }
 }

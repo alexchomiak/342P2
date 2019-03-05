@@ -15,7 +15,7 @@ public class Player {
     protected int currentBid;
     protected Deck hand;
     protected Deck wonTricks;
-    
+
     protected boolean turnCompleted = false;
     protected boolean turnStarted = false;
     //Display elements
@@ -205,14 +205,15 @@ public class Player {
 
     public void handleBid(int bid) {
         //handle bid based off parameter value
-        //if game is not started return
-        if(parent.getGameStarted() != true) return;
-
         //set madeBid to true
-        madeBid = true;
+        this.madeBid = true;
 
         //set currentBid data member to bid
-        currentBid = bid;
+        this.currentBid = bid;
+
+        //if game is not started return (this is for testing purposes where
+        // we only want bid state and value)
+        if(parent.getGameStarted() != true) return;
 
         //update current bids arrayList in parent instance
         parent.getCurrentBids().set(playerNumber - 1,bid);
@@ -229,7 +230,7 @@ public class Player {
         }
     }
 
-    void makeBid() {
+    public void makeBid() {
         //open bid window if not opened
         if(!parent.getBidWindowOpen()) {
             //update game state for bid window in parent

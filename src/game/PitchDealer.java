@@ -12,7 +12,7 @@ public class PitchDealer implements Dealer {
         initializeDeck();
     }
 
-    void initializeDeck() {
+    public void initializeDeck() {
         //add all cards to deck
         //initialize deck
         //loop through all suits

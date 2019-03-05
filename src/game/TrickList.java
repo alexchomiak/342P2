@@ -56,7 +56,7 @@ public class TrickList {
         displayPane.getChildren().add(PromptContainer);
 
         //add placeholder rectangle for spacing
-        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 20 ,5);
+        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 60 ,5);
         placeholder.setOpacity(0.0);
         displayPane.getChildren().add(placeholder);
 

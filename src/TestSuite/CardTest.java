@@ -21,6 +21,7 @@ class CardTest {
 
     @BeforeEach
     void initCard() {
+        //initialize each card before test
         testCard = new Card(null,1,'S',false,true);
     }
 
@@ -28,6 +29,7 @@ class CardTest {
 
     @Test
     void testConstructor() {
+        //test card constructor
         Card constructorTest = new Card(null,10,'D',false,true);
         assertAll("Card object properly created",
                 () -> assertEquals(10,constructorTest.getRank(),"Correct Rank initialized"),
@@ -43,22 +45,26 @@ class CardTest {
 
     @Test
     void getFace() {
+        //test get face of card
         assertEquals('S',testCard.getFace(),"Test getter for card face");
     }
 
     @Test
     void setFace() {
+        //test set face of card
         testCard.setFace('C');
         assertEquals('C',testCard.getFace(),"Test setter for card face");
     }
 
     @Test
     void getRank() {
+        //test get rank of card
         assertEquals(1,testCard.getRank(),"Test getter for card rank");
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setRank() {
+        //test set rank of card
         testCard.setRank(2);
         assertEquals(2,testCard.getRank(),"Test setter for card rank");
     }
@@ -71,6 +77,7 @@ class CardTest {
 
     @Test
     void changeCard() {
+        //test changecard
         Rectangle oldRectangleObject = testCard.View();
         testCard.changeCard(10,'C');
 
@@ -84,34 +91,40 @@ class CardTest {
 
     @Test
     void getX() {
+        //test getter for x
         assertEquals(0,testCard.getX(),"Test getter for X Coordinate of Card");
     }
 
     @Test
     void getY() {
+        //test getter for y
         assertEquals(0,testCard.getY(),"Test getter for Y Coordinate of Card");
     }
 
     @Test
     void setX() {
+        //test setter for x
         testCard.setX(10);
         assertEquals(10,testCard.getX(),"Properly updates X Coordinate of card");
     }
 
     @Test
     void setY() {
+        //test setter for y
         testCard.setY(10);
         assertEquals(10,testCard.getY(),"Properly update Y Coordinate of card");
     }
 
     @Test
     void setScale() {
+        //test scale setter
         testCard.setScale(2.0);
         assertEquals(2.0,testCard.getScale(),"Properly update Scale of card rectangle");
     }
 
     @Test
     void getScale() {
+        //test scale getter function
         assertEquals(1.0,testCard.getScale(),"Test getter for Scale of card ");
     }
 

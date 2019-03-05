@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -25,29 +26,45 @@ public class Scoreboard {
     private Label turnSubjectPrompt;
     private Label turnPrompt;
     private Button exitGame;
+    private Button resetGame;
     private ArrayList<Label> playerBids;
     private ArrayList<Label> playerScores;
     private ImageView trumpView;
 
 
-    public Scoreboard(int numPlayers, Stage window) {
+    public Scoreboard(int numPlayers, Pitch game) {
         //initialize displaypane for scoreboard
         displayPane = new FlowPane(Orientation.VERTICAL);
         displayPane.setVgap(10);
         displayPane.setHgap(20);
-        displayPane.setPadding(new Insets(20,20,20,20));
+        displayPane.setPadding(new Insets(10,10,10,20));
 
-        //intitialize exitGame button
-        this.exitGame = new Button("Exit Application");
-        exitGame.setOnAction(e -> {
-            window.close();
+        //gameOptions hbox initialization
+        HBox gameOptions = new HBox(0);
+        gameOptions.setAlignment(Pos.CENTER);
+
+        //initialize resetGame button
+        this.resetGame = new Button("Reset Game");
+        resetGame.setOnAction(e -> {
+            game.resetGame();
         });
 
+        //intitialize exitGame button
+        this.exitGame = new Button("Exit Game");
+        exitGame.setOnAction(e -> {
+            game.getWindow().setScene(game.getMainMenu());
+        });
+
+        resetGame.setScaleX(.75);
+        resetGame.setScaleY(.75);
         exitGame.setScaleX(.75);
         exitGame.setScaleY(.75);
 
-        //add exit game to scoreboard
-        displayPane.getChildren().add(exitGame);
+        //add exit game & resetgame to gameoptions
+        gameOptions.getChildren().addAll(resetGame,exitGame);
+
+        //add gameoptions to scoreboard
+        displayPane.getChildren().add(gameOptions);
 
         //add turn prompt subject
         turnSubjectPrompt = new Label("Turn");
@@ -276,6 +293,16 @@ public class Scoreboard {
     public void showExitButton(){
         this.exitGame.setDisable(false);
         this.exitGame.setOpacity(1.0);
+    }
+
+    //hide and show functions for reset button
+    public void hideResetButton(){
+        this.resetGame.setDisable(true);
+        this.resetGame.setOpacity(0.0);
+    }
+    public void showResetButton(){
+        this.resetGame.setDisable(false);
+        this.resetGame.setOpacity(1.0);
     }
 
 
