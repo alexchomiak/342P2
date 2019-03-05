@@ -10,22 +10,27 @@ import static game.PitchConstants.*;
 import java.util.ArrayList;
 
 public class PitchScoreCalculator {
-
-
     public PitchScoreCalculator(){}
 
     public Player calculateTrickWinner(Pitch game){
+        //grab currentTrick from game
         Deck currentTrick = game.getCurrentTrick();
+
+        //grab startplayer from game
         Player startPlayer = game.getStartPlayer();
 
+        //grab cards from current trick
         ArrayList<Card> Cards = currentTrick.getCards();
 
+        //set winning index to 0
         int winningIndex = 0;
 
+        //possible winning indexes arraylist
         ArrayList<Integer> possibleWinningIndexes = new ArrayList<Integer>();
 
-
+        //set containsTrump boolean
         boolean containsTrump = false;
+
         //check for trump suit
         for(int i = 0; i < Cards.size(); i++) {
             if(Cards.get(i).getFace() == game.getCurrentTrumpSuit()) {
@@ -34,24 +39,38 @@ public class PitchScoreCalculator {
             }
         }
 
+        //if trick contains trump,
+        //look for highest trump rank
         if(containsTrump) {
             int currentHighestRank = 0;
             int currentHighestIndex = -1;
 
+            //loop through each possible winning index and look for the highest
+            //ranked trump card in the trick
             for(int i = 0; i < possibleWinningIndexes.size(); i++) {
                 int currentIndex = possibleWinningIndexes.get(i);
+
+                //if it is higher than the current rank, set the currentHighestIndex
+                //to the current index
                 if(Cards.get(currentIndex).getRank() > currentHighestRank) {
                     currentHighestRank = Cards.get(currentIndex).getRank();
                     currentHighestIndex = currentIndex;
                 }
+
+                //if is an ace, do the same, and set current highest rank
+                //to arbitrarily high value
                 if(Cards.get(currentIndex).getRank() == 1) {
                     currentHighestIndex = currentIndex;
                     currentHighestRank = 25;
                 }
             }
+
+            //set winning index to current highest index
             winningIndex = currentHighestIndex;
         }
         else {
+            //loop through each card looking for lead suit
+            //and add possible winning indexes to lead
             for(int i = 0; i < Cards.size(); i++) {
                 if(Cards.get(i).getFace() == game.getCurrentLeadSuit()) {
                     possibleWinningIndexes.add(i);
@@ -61,59 +80,80 @@ public class PitchScoreCalculator {
             int currentHighestRank = 0;
             int currentHighestIndex = -1;
 
+            //loop through each possible winning index and look for the highest ranked
+            //lead card in the trick
             for(int i = 0; i < possibleWinningIndexes.size(); i++) {
                 int currentIndex = possibleWinningIndexes.get(i);
+
+                //if its higher than the current highest rank
+                //set the current highest to the current cards rank
+                //and set currentHighest index to index
                 if(Cards.get(currentIndex).getRank() > currentHighestRank) {
                     currentHighestRank = Cards.get(currentIndex).getRank();
                     currentHighestIndex = currentIndex;
                 }
+
+                //if it is ace doe the same, and set the current highest rank to
+                //an arbitrarily high value
                 if(Cards.get(currentIndex).getRank() == 1) {
                     currentHighestIndex = currentIndex;
                     currentHighestRank = 25;
                 }
             }
 
+            //set winning index to current highest index
             winningIndex = currentHighestIndex;
-
         }
 
-
-
-
-
-
+        //set start player of next trick
         for(int i = 0 ; i < winningIndex; i++) {
             startPlayer = startPlayer.getNextPlayer();
         }
 
-
-
+        //set trick winning index
         game.setTrickWinningIndex(winningIndex);
         return startPlayer;
     }
 
 
     public VBox calculateRoundScore(Pitch game) {
+        //this function calculates the given round score
+        //and returns a vbox with the round summary
+        //it updates the parent games score and checks for winners
 
+        //set round summary state to true
         game.setRoundSummaryInProgress(true);
+
+        //hide turn prompt
         if(game.getScoreboard() != null)  game.getScoreboard().setTurnPrompt(0);
 
+        //get current trump suit
         char trump = game.getCurrentTrumpSuit();
 
+        //initialize round summary vbox
         VBox roundSummary = new VBox(10);
         roundSummary.setAlignment(Pos.CENTER);
         roundSummary.setStyle(roundSummaryStyle);
 
+        //get playerTricks into 2D array
         ArrayList< ArrayList<Card> > playerTricks = new ArrayList< ArrayList<Card> >();
 
+        //add each players won tricks array to the playerTricks array
         Player iterator = game.getPlayer();
         ArrayList<Integer> gamePoints = new ArrayList<Integer>();
         for(int i = 0; i < game.getPlayerCount(); i++) {
+            //add 0 to gamepoints
             gamePoints.add(0);
+
+            //add array to player tricks
             playerTricks.add(iterator.getTricks().getCards());
+
+            //go to next player
             iterator = iterator.getNextPlayer();
         }
 
+
+        //initialize winning indexes
         int playerLowTrumpWinner = -1;
         int playerHighTrumpWinner = -1;
         int playerJackTrumpWinner = -1;
@@ -125,22 +165,21 @@ public class PitchScoreCalculator {
         int highTrumpRank = 0;
         int maxPointsScored = -1;
 
-        System.out.println(trump);
         for(int i = 0; i < playerTricks.size(); i++) {
+            //loop through each players won tricks and calculate scores
+
             ArrayList<Card> currentTricks = playerTricks.get(i);
             int pointsScored = 0;
 
-            System.out.println("Player " + Integer.toString(i));
-
+            //loop through each card in trick
             for(int j = 0; j < currentTricks.size(); j++) {
                 Card card = currentTricks.get(j);
 
                 int rank = card.getRank();
                 char face = card.getFace();
 
-                System.out.println(Integer.toString(rank) + face);
 
-                //increment scores
+                //increment score count for player
                 switch(rank) {
                     case 10: pointsScored += 10; break;
                     case 11: pointsScored += 1; break;
@@ -159,11 +198,13 @@ public class PitchScoreCalculator {
                     playerJackTrumpWinner = i;
                 }
 
+                //see if rank is greater than currrent high trump
                 if(rank > highTrumpRank && face == trump) {
                     highTrumpRank = rank;
                     playerHighTrumpWinner = i;
                 }
 
+                //see if rank is lower than current low trump
                 if(rank < lowTrumpRank && face == trump) {
                     lowTrumpRank = rank;
                     playerLowTrumpWinner = i;
@@ -171,10 +212,12 @@ public class PitchScoreCalculator {
 
             }
 
+            //if there is a tie for points scored, set winner to -1
             if(pointsScored == maxPointsScored) {
                 playerGamePointsWinner = -1;
             }
 
+            //if pointsScored > maxPoints scored, update game points winner
             if(pointsScored > maxPointsScored) {
                 maxPointsScored = pointsScored;
                 playerGamePointsWinner = i;
@@ -199,18 +242,6 @@ public class PitchScoreCalculator {
         if(iterator.getCurrentBid() != 5) {
             playerSmudgeWinner = -1;
         }
-
-
-
-        System.out.println(playerGamePointsWinner);
-        System.out.print(playerHighTrumpWinner);
-
-        System.out.print(playerLowTrumpWinner);
-        System.out.println(playerJackTrumpWinner);
-        System.out.println(playerSmudgeWinner);
-
-
-
 
         //score summary label
         Label scoreSummary = new Label("Round Summary");
@@ -263,7 +294,7 @@ public class PitchScoreCalculator {
             if(i == playerJackTrumpWinner) roundScore++;
             if(i == playerSmudgeWinner)  roundScore++;
 
-
+            //show score summary for each player
             if(iterator.getCurrentBid() > 0) {
                 if(i == 0) {
                     prompt += "You bid ";
@@ -289,14 +320,20 @@ public class PitchScoreCalculator {
 
             }
 
-
+            //set text and fill
             roundLabel.setText(prompt);
             roundLabel.setTextFill(getColor(i));
+
+            //add to roundsummary
             roundSummary.getChildren().add(roundLabel);
 
+            //update player score
             game.getCurrentScores().set(i,game.getCurrentScores().get(i) + roundScore);
 
+            //reset player bids
             iterator.resetBids();
+
+            //go to next player
             iterator = iterator.getNextPlayer();
 
         }
@@ -313,6 +350,9 @@ public class PitchScoreCalculator {
         if(playersWon) promptText = "End Game (Winner Found)";
         Button nextRound = new Button(promptText);
 
+
+        //set nextround button event listener based off
+        //game is finished or not
         if(!playersWon) {
             nextRound.setOnAction( e -> {
                 game.setRoundSummaryInProgress(false);
@@ -325,15 +365,17 @@ public class PitchScoreCalculator {
         }
 
 
+        //add next button to roundsummary
         roundSummary.getChildren().add(nextRound);
 
 
+        //return roundsummary
         return roundSummary;
     }
 
 
     Color getColor(int playerIndex) {
-
+        //Utility function for getting player color and text coloring
         switch(playerIndex) {
             case 0: return player1;
             case 1: return player2;

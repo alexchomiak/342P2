@@ -6,12 +6,12 @@ public final class PitchConstants {
     private PitchConstants(){
         //prevent instantiation
     }
+
+    //game constants
     public static final int cardImageWidth = 90;
     public static final int cardImageHeight = 160;
     public static final int hoverAnimationOffset = 30;
-
     public static final int scoreLimit = 7;
-
     public static final Color player1 = Color.GOLD;
     public static final Color player2 = Color.rgb(249, 109, 240);
     public static final Color player3 = Color.rgb(0, 94, 247);
