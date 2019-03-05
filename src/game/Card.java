@@ -126,6 +126,11 @@ public class Card {
 
 
     public void changeCard(int rank, char face) {
+        //this function changes card rank and face
+        //then reloads the image and rerenders the
+        //rectangle object
+
+        //update rank and face
         this.rank = rank;
         this.face = face;
 
@@ -169,10 +174,7 @@ public class Card {
             //set rectangle background to card image
             cardRect.setFill(new ImagePattern(cardImage));
 
-
-
-
-            //add listeners
+            //add rectangle listeners
             cardRect.setOnMouseClicked(e -> handleClick());
             cardRect.setOnMouseEntered(e -> this.overCard = true);
             cardRect.setOnMouseExited(e -> {
@@ -181,8 +183,6 @@ public class Card {
                 this.handleHover(e);
             });
             cardRect.setOnMouseMoved(e -> handleHover(e));
-
-
 
             //set card stroketype
             cardRect.setStrokeType(StrokeType.INSIDE);

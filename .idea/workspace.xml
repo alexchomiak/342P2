@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Card.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Deck.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,6 +100,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/Deck.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
+              <folding>
+                <element signature="e#6170#6171#0" expanded="true" />
+                <element signature="e#6205#6206#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/CardTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,14 +125,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+            <state relative-caret-position="2074">
+              <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2941#2942#0" expanded="true" />
                 <element signature="e#2977#2978#0" expanded="true" />
                 <element signature="e#5609#5610#0" expanded="true" />
                 <element signature="e#5641#5642#0" expanded="true" />
@@ -212,15 +222,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestSuite/PitchScoreCalculatorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="148" selection-start-line="148" selection-end-line="148" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestSuite/PitchDealerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -245,7 +246,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sys</find>
       <find>timeDe</find>
       <find>setTru</find>
       <find>currentTrumpSuit</find>
@@ -275,6 +275,7 @@
       <find>resetGame</find>
       <find>getStylesh</find>
       <find>getCompl</find>
+      <find>system</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -322,7 +323,6 @@
         <option value="$PROJECT_DIR$/src/sample/Player.java" />
         <option value="$PROJECT_DIR$/src/game/PitchConstants.java" />
         <option value="$PROJECT_DIR$/src/styles.css" />
-        <option value="$PROJECT_DIR$/src/game/Deck.java" />
         <option value="$PROJECT_DIR$/src/game/Scoreboard.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PitchTest.java" />
@@ -338,6 +338,7 @@
         <option value="$PROJECT_DIR$/src/TestSuite/PitchScoreCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/game/Main.java" />
         <option value="$PROJECT_DIR$/src/game/Card.java" />
+        <option value="$PROJECT_DIR$/src/game/Deck.java" />
       </list>
     </option>
   </component>
@@ -409,7 +410,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551757639031" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551758730394" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -447,7 +448,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All Tests">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -662,12 +663,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests - 2019.03.04 at 12h 39m 49s.xml">
-      <configuration name="All Tests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.04 at 12h 52m 55s.xml">
-      <configuration name="All Tests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_Tests - 2019.03.04 at 20h 57m 02s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
@@ -692,6 +687,12 @@
     <history-entry file="All_Tests - 2019.03.04 at 21h 26m 15s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_Tests - 2019.03.04 at 21h 47m 36s.xml">
+      <configuration name="All Tests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.03.04 at 21h 52m 12s.xml">
+      <configuration name="All Tests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
@@ -709,7 +710,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.08061224" />
-      <window_info anchor="bottom" x="2347" y="-1485" width="773" height="726" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
+      <window_info active="true" anchor="bottom" x="2347" y="-1485" width="773" height="726" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24919786" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -720,7 +721,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info active="true" anchor="bottom" id="Messages" internal_type="SLIDING" order="13" visible="true" weight="0.1197861" />
+      <window_info anchor="bottom" id="Messages" internal_type="SLIDING" order="13" weight="0.1197861" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -963,19 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
-          <folding>
-            <element signature="e#3529#3530#0" expanded="true" />
-            <element signature="e#3568#3569#0" expanded="true" />
-            <element signature="e#3655#3656#0" expanded="true" />
-            <element signature="e#3690#3691#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1150,11 +1138,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        <state relative-caret-position="2074">
+          <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
             <element signature="e#2977#2978#0" expanded="true" />
             <element signature="e#5609#5610#0" expanded="true" />
             <element signature="e#5641#5642#0" expanded="true" />
@@ -1166,6 +1153,17 @@
             <element signature="e#6250#6251#0" expanded="true" />
             <element signature="e#6275#6276#0" expanded="true" />
             <element signature="e#6299#6300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="e#6170#6171#0" expanded="true" />
+            <element signature="e#6205#6206#0" expanded="true" />
           </folding>
         </state>
       </provider>
