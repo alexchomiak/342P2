@@ -12,14 +12,11 @@ import java.util.ArrayList;
 
 import static game.PitchConstants.*;
 public class TrickList {
-    FlowPane displayPane;
+    private FlowPane displayPane;
 
-    Label Prompt;
-    Label PromptDescription;
-    ArrayList<HBox> tricks;
-
-
-
+    private Label Prompt;
+    private Label PromptDescription;
+    private ArrayList<HBox> tricks;
     private final double cardScaleFactor = .45;
     private final int placeHolderSize = (int)Math.floor(cardScaleFactor * (double)cardImageHeight);
 

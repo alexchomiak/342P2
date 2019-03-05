@@ -50,7 +50,7 @@ public class Pitch implements DealerType{
     private Label Prompt;
 
     //score calculator
-    PitchScoreCalculator scoreCalculator;
+    private PitchScoreCalculator scoreCalculator;
 
     //gamestate managers
     private boolean bidWindowOpen = false;
@@ -254,7 +254,6 @@ public class Pitch implements DealerType{
                     }
 
                     ArrayList<Card> views = currentTrick.getCards();
-                    //System.out.println(trickWinningIndex);
 
 
                     setPrompt(startPlayer.playerNumber);
@@ -520,7 +519,7 @@ public class Pitch implements DealerType{
 
 
         VBox topBar = new VBox();
-        Title = new Label("Pitch");
+        Title = new Label("Pitch (Up to a score of " + Integer.toString(scoreLimit) + ")");
         Title.setStyle("-fx-font: 18px arial");
         RoundCount = new Label("2");
         Prompt = new Label("");

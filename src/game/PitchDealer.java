@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class PitchDealer implements Dealer {
     private Deck deck;
-
-
+    
     public PitchDealer() {
         deck = new Deck(null);
         initializeDeck();
@@ -15,8 +14,11 @@ public class PitchDealer implements Dealer {
 
     void initializeDeck() {
         //add all cards to deck
-
+        //initialize deck
+        //loop through all suits
         for(int i = 0; i < 4; i++) {
+
+            //add every rank of each suit to the deck
             for(int j = 1; j < 14; j++) {
                 char face;
                 switch(i) {
@@ -34,27 +36,40 @@ public class PitchDealer implements Dealer {
     }
 
     public void resetDeck() {
+        //clear the deck
         deck.clearDeck();
+
+        //reinitialize the deck
         initializeDeck();
     }
 
 
 
     public ArrayList<Card> dealHand(){
-        Random rand = new Random();
+        //initialize returnHand
         ArrayList<Card> returnHand = new ArrayList<Card>();
 
+        //if deck size is less than 6, reset deck
         if(deck.getCards().size() < 6) resetDeck();
 
+        //shuffle the deck
         Collections.shuffle(deck.getCards());
+
+        //give 6 cards from the deck to the player
         for(int i = 0; i < 6; i++) {
-            //loop until valid card is chosen
+            //grab card from deck
             Card addition = deck.getCards().get(0);
+
+            //remove the selected card
             deck.removeCard(addition);
+
+            //add selected card to returnhand
             returnHand.add(addition);
         }
         return returnHand;
     }
 
-    public Deck getDeck() {return this.deck;}
+    public Deck getDeck() {
+        return this.deck;
+    }
 }

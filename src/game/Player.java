@@ -231,46 +231,35 @@ public class Player {
 
 
     //getters and setters
-
     public Deck getTricks() {return this.wonTricks;}
-
     public int getCurrentBid(){return this.currentBid;}
-
     public boolean getTurnStarted(){return turnStarted;}
     public boolean getCompleted() { return turnCompleted;}
     public boolean getBidded(){return madeBid;}
     public void setPlayerNumber(int i){this.playerNumber = i;}
     public int getPlayerNumber(){return this.playerNumber;}
-
     public void setNextPlayer(Player p) {
         this.nextPlayer = p;
     }
     public Player getNextPlayer(){return this.nextPlayer;}
-
     public void setCurrentBid(int currentBid) {
         this.currentBid = currentBid;
     }
-
     public boolean isTurnStarted() {
         return turnStarted;
     }
-
     public void setTurnStarted(boolean turnStarted) {
         this.turnStarted = turnStarted;
     }
-
     public int getScore() {
         return score;
     }
-
     public void setScore(int score) {
         this.score = score;
     }
-
     public boolean isStartingPlayer() {
         return startingPlayer;
     }
-
     public void setStartingPlayer(boolean startingPlayer) {
         this.startingPlayer = startingPlayer;
     }

@@ -345,6 +345,7 @@ public class PitchScoreCalculator {
                 playersWon = true;
             }
         }
+
         //Next Round/EndGame prompt button
         String promptText = "Next Round";
         if(playersWon) promptText = "End Game (Winner Found)";
@@ -364,10 +365,8 @@ public class PitchScoreCalculator {
             });
         }
 
-
         //add next button to roundsummary
         roundSummary.getChildren().add(nextRound);
-
 
         //return roundsummary
         return roundSummary;
