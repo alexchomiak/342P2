@@ -192,8 +192,8 @@ public class Scoreboard {
         for(int i = 0; i < playerBids.size(); i++){
             //loop through each players bids
             //and set prompt accordingly
-
             String prompt = new String("");
+
             if(i == 0) {
                 prompt += "You bid ";
             }
