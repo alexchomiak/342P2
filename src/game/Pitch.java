@@ -100,8 +100,8 @@ public class Pitch implements DealerType{
     public Deck getGameField(){return this.gameField;}
 
 
-    ArrayList<Integer> getCurrentScores() {return this.currentScores;}
-    ArrayList<Integer> getCurrentBids() {return this.currentBids;}
+    public ArrayList<Integer> getCurrentScores() {return this.currentScores;}
+    public ArrayList<Integer> getCurrentBids() {return this.currentBids;}
 
     public int getPlayerCount() {return this.playerCount;}
 

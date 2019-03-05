@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class PitchScoreCalculator {
 
 
-    PitchScoreCalculator(){}
+    public PitchScoreCalculator(){}
 
-    Player calculateTrickWinner(Pitch game){
+    public Player calculateTrickWinner(Pitch game){
         Deck currentTrick = game.getCurrentTrick();
         Player startPlayer = game.getStartPlayer();
 
@@ -93,10 +93,10 @@ public class PitchScoreCalculator {
     }
 
 
-    VBox calculateRoundScore(Pitch game) {
+    public VBox calculateRoundScore(Pitch game) {
 
         game.setRoundSummaryInProgress(true);
-        game.getScoreboard().setTurnPrompt(0);
+        if(game.getScoreboard() != null)  game.getScoreboard().setTurnPrompt(0);
 
         char trump = game.getCurrentTrumpSuit();
 
