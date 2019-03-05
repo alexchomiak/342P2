@@ -18,11 +18,9 @@ public class Main extends Application  {
     private final int windowWidth = 1000;
     private final int windowHeight = 800;
 
-
     private Stage window;
     private Scene mainMenu, gameWindow;
     private Button button;
-
 
     private Button twoPlayers;
     private Button threePlayers;

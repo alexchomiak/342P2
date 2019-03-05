@@ -1,7 +1,7 @@
 package game;
 
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseEvent
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -12,74 +12,54 @@ import static game.PitchConstants.*;
 public class Card {
     private char face;
     private int rank;
-
-
-    public char getFace() {return this.face;}
-    public void setFace(char c) {changeCard(this.rank,c);}
-
-    public int getRank() {return this.rank;}
-    public void setRank(int r){changeCard(r,this.face);}
-
-
-
     private String imgSrc;
-
     private int width = 0;
     private int height = 0 ;
     private int hoverOffset = 0 ;
-
-
-    double scaleFactor = 1.0;
-
+    private double scaleFactor = 1.0;
     private boolean mouseOver = false;
-
     private Image cardImage;
     private Rectangle cardRect;
-
     private Deck parent;
-
     boolean cardIsSelectable = false;
 
-
-
-
     public Card(Deck parent, int rank, char face, boolean selectable, boolean loadImageSource) {
+        //intialize rank and face memebrs
         this.rank = rank;
         this.face = face;
 
         //set object data members
         this.cardIsSelectable = selectable;
 
-
+        //if loading image source, set scale of image to 1.0
+        //which will cause a rerender and load the image source
         if(loadImageSource) {
             setScale(1.0);
         }
 
-
-
+        //set parent deck
         this.parent = parent;
 
     }
 
     public Card(Deck parent, int rank, char face, boolean selectable) {
+        //alternate constructor
        this(parent, rank, face, selectable,true);
     }
 
 
     //handle click on card
     private void handleClick() {
-
-
-
-
         //if card is not currently selectable, ignore click event
         if (!cardIsSelectable) return;
 
         //if mouse is not currently over defined area, ignore click event
         if (!mouseOver) return;
 
-
+        //update selected card
         parent.setSelectedCard(this);
+
+        //remove card from deck
         parent.removeCard(this);
     }
 
@@ -92,35 +72,47 @@ public class Card {
         //if hover y value is greater than the hoverAnimationOffset portion of the card,
         //reset styles and return
         if (overCard && e.getY() > this.y + (height - (hoverOffset + 10))) {
+            //set stroke width to 0
             cardRect.setStrokeWidth(0);
+
+            //set translation back to regular y
             cardRect.setTranslateY(this.y);
+
+            //set mouseOver to false
             this.mouseOver = false;
             return;
         }
 
 
         if (overCard) {
+            //if overcard, set stroke color to orangered
             cardRect.setStroke(Color.ORANGERED);
+
+            //set stroke width to 2px
             cardRect.setStrokeWidth(2);
 
+            //set scale to be slightly bigger
             cardRect.setScaleX(1.1);
             cardRect.setScaleY(1.1);
 
-            if (this.x > -1 && this.y > -1) {
-                cardRect.setTranslateY(this.y - hoverOffset);
-            }
+            //set translation value
+            cardRect.setTranslateY(this.y - hoverOffset);
 
+            //set mouseover to true
             this.mouseOver = true;
 
         } else {
+            //set stroke width to 0px
             cardRect.setStrokeWidth(0);
+
+            //set scale back to normal
             cardRect.setScaleX(1.0);
             cardRect.setScaleY(1.0);
 
-            if (this.x > -1 && this.y > -1) {
-                cardRect.setTranslateY(this.y);
-            }
+            //set translation back to normal
+            cardRect.setTranslateY(this.y);
 
+            //set mouseover to false
             this.mouseOver = false;
 
         }
@@ -195,19 +187,72 @@ public class Card {
             //set card stroketype
             cardRect.setStrokeType(StrokeType.INSIDE);
 
-
-
-            //if the image is not loaded, an exception will be thrown, and the image file path will
-            //be thrown to aid debugging
-            //System.out.println("Image with path " + imgSrc + " was not found!");
-
-
     }
-
-
 
     private int x;
     private int y;
+
+    public void rotate(double deg) {
+        //rotate value
+        this.cardRect.setRotate(deg);
+    }
+
+    public void setCardIsSelectable(boolean s) {
+        //if card is selectable, add full opacity
+        if(s) {
+            cardRect.setOpacity(1.0);
+        } else {
+            //otherwise have half opacity
+            cardRect.setOpacity(.5);
+        }
+
+        //set selectable boolean
+        this.cardIsSelectable = s;
+    }
+
+    //getters and setters
+
+    public void highlight(Color color){
+        cardRect.setStrokeWidth(2);
+        cardRect.setStroke(color);
+    }
+
+    public char getFace() {
+        return this.face;
+    }
+
+    public void setFace(char c) {
+        //rerender card with new face
+        changeCard(this.rank,c);
+    }
+
+    public int getRank() {
+        return this.rank;
+    }
+
+    public void setRank(int r){
+        //rerender card with new rank
+        changeCard(r,this.face);
+    }
+
+    public void setScale(double scale) {
+        //set scaleFactore
+        scaleFactor = scale;
+
+        //update hoverOffset to appropriate value
+        hoverOffset = (int)Math.floor((double)hoverAnimationOffset * scale);
+
+        //update width and height to appropriate values
+        width = (int)Math.floor((double)cardImageWidth * scale);
+        height = (int)Math.floor((double)cardImageHeight * scale);
+
+        //rerender card
+        changeCard(rank,face);
+    }
+
+    public double getScale(){
+        return this.scaleFactor;
+    }
 
     public int getX() {
         return x;
@@ -227,37 +272,4 @@ public class Card {
         this.cardRect.setTranslateY(y);
     }
 
-    public void rotate(double deg) {
-        this.cardRect.setRotate(deg);
-    }
-
-
-
-    public void setCardIsSelectable(boolean s) {
-        if(s) {
-            cardRect.setOpacity(1.0);
-        } else {
-            cardRect.setOpacity(.5);
-        }
-        this.cardIsSelectable = s;
-    }
-
-    public void setScale(double scale) {
-        scaleFactor = scale;
-        hoverOffset = (int)Math.floor((double)hoverAnimationOffset * scale);
-        width = (int)Math.floor((double)cardImageWidth * scale);
-        height = (int)Math.floor((double)cardImageHeight * scale);
-        //rerender card
-        changeCard(rank,face);
-    }
-
-    public double getScale(){
-        return this.scaleFactor;
-    }
-
-
-    public void highlight(Color color){
-        cardRect.setStrokeWidth(2);
-        cardRect.setStroke(color);
-    }
 }

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
+      <change beforePath="$PROJECT_DIR$/src/game/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -110,33 +111,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="876">
-              <caret line="226" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="51">
+              <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#2941#2942#0" expanded="true" />
                 <element signature="e#2977#2978#0" expanded="true" />
-                <element signature="e#5405#5406#0" expanded="true" />
-                <element signature="e#5429#5430#0" expanded="true" />
-                <element signature="e#5454#5455#0" expanded="true" />
-                <element signature="e#5478#5479#0" expanded="true" />
-                <element signature="e#5710#5711#0" expanded="true" />
-                <element signature="e#5754#5755#0" expanded="true" />
+                <element signature="e#5609#5610#0" expanded="true" />
+                <element signature="e#5641#5642#0" expanded="true" />
+                <element signature="e#5746#5747#0" expanded="true" />
+                <element signature="e#5778#5779#0" expanded="true" />
+                <element signature="e#6453#6454#0" expanded="true" />
+                <element signature="e#6492#6493#0" expanded="true" />
+                <element signature="e#6226#6227#0" expanded="true" />
+                <element signature="e#6250#6251#0" expanded="true" />
+                <element signature="e#6275#6276#0" expanded="true" />
+                <element signature="e#6299#6300#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3440">
-              <caret line="217" selection-start-line="17" selection-end-line="217" />
+            <state relative-caret-position="-2614">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#782#783#0" expanded="true" />
+                <element signature="e#810#811#0" expanded="true" />
+                <element signature="e#5505#5506#0" expanded="true" />
+                <element signature="e#5535#5536#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -309,7 +317,6 @@
         <option value="$PROJECT_DIR$/src/sample/Deck.java" />
         <option value="$PROJECT_DIR$/src/sample/Player.java" />
         <option value="$PROJECT_DIR$/src/game/PitchConstants.java" />
-        <option value="$PROJECT_DIR$/src/game/Card.java" />
         <option value="$PROJECT_DIR$/src/styles.css" />
         <option value="$PROJECT_DIR$/src/game/Deck.java" />
         <option value="$PROJECT_DIR$/src/game/Scoreboard.java" />
@@ -326,6 +333,7 @@
         <option value="$PROJECT_DIR$/src/game/PitchScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/TestSuite/PitchScoreCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/game/Main.java" />
+        <option value="$PROJECT_DIR$/src/game/Card.java" />
       </list>
     </option>
   </component>
@@ -397,7 +405,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551756811326" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551757501739" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -1122,30 +1130,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="876">
-          <caret line="226" selection-start-line="226" selection-end-line="226" />
+        <state relative-caret-position="-2614">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2977#2978#0" expanded="true" />
-            <element signature="e#5405#5406#0" expanded="true" />
-            <element signature="e#5429#5430#0" expanded="true" />
-            <element signature="e#5454#5455#0" expanded="true" />
-            <element signature="e#5478#5479#0" expanded="true" />
-            <element signature="e#5710#5711#0" expanded="true" />
-            <element signature="e#5754#5755#0" expanded="true" />
+            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#5505#5506#0" expanded="true" />
+            <element signature="e#5535#5536#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/game/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3440">
-          <caret line="217" selection-start-line="17" selection-end-line="217" />
+        <state relative-caret-position="51">
+          <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2941#2942#0" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+            <element signature="e#5609#5610#0" expanded="true" />
+            <element signature="e#5641#5642#0" expanded="true" />
+            <element signature="e#5746#5747#0" expanded="true" />
+            <element signature="e#5778#5779#0" expanded="true" />
+            <element signature="e#6453#6454#0" expanded="true" />
+            <element signature="e#6492#6493#0" expanded="true" />
+            <element signature="e#6226#6227#0" expanded="true" />
+            <element signature="e#6250#6251#0" expanded="true" />
+            <element signature="e#6275#6276#0" expanded="true" />
+            <element signature="e#6299#6300#0" expanded="true" />
           </folding>
         </state>
       </provider>
