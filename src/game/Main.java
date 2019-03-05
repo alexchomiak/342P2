@@ -17,7 +17,7 @@ public class Main extends Application  {
 
 
     private Stage window;
-    private Scene mainMenu, gameWindow;
+    private Scene mainMenu;
 
     private Button twoPlayers;
     private Button threePlayers;
