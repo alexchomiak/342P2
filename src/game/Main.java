@@ -19,9 +19,9 @@ public class Main extends Application  {
     private final int windowHeight = 800;
 
 
-    Stage window;
-    Scene mainMenu, gameWindow;
-    Button button;
+    private Stage window;
+    private Scene mainMenu, gameWindow;
+    private Button button;
 
 
     private Button twoPlayers;
@@ -39,24 +39,27 @@ public class Main extends Application  {
     public void start(Stage primaryStage) throws Exception{
        window = primaryStage;
 
-        initializeMenuScene();
-
-
-
+       //initialize menu scene
+       initializeMenuScene();
 
        //set title and show window
        window.setTitle("Pitch Game");
        window.setScene(mainMenu);
 
-       window.show();
+       //show window
+        window.show();
 
-       fourPlayers.requestFocus();
+       //set default button focus (4 players)
+        fourPlayers.requestFocus();
+
+       //set min width and height to current width and height
         primaryStage.setMinWidth(primaryStage.getWidth());
         primaryStage.setMinHeight(primaryStage.getHeight());
     }
 
 
     void setPlayerCount(int n){
+        //update player count
         this.players = n;
         currentPlayerCountSelection.setText("Current Selection: " + Integer.toString(n) + " Players");
     }
@@ -64,21 +67,29 @@ public class Main extends Application  {
 
     Label currentPlayerCountSelection;
     void initializeMenuScene() {
-        //labels
+        //Greeting label
         Label Greeting = new Label("Welcome to the Pitch Game!");
+        //set greeting text color
         Greeting.setTextFill(textColor);
+
+        //set greeting style
+        Greeting.setStyle("-fx-font: 24 arial");
+
+        //player prompt label
         Label Prompt = new Label("Choose a number of players to play against!");
+
+        //set prompt styling
         Prompt.setStyle("-fx-font: 20 arial");
         Prompt.setTextFill(textColor);
+
+        //current player selection label
         currentPlayerCountSelection = new Label("Current Selection: 4 Players");
+
+        //set player selection styling
         currentPlayerCountSelection.setStyle("-fx-font: 20 arial");
         currentPlayerCountSelection.setTextFill(textColor);
 
-
-        //set label styles
-        Greeting.setStyle("-fx-font: 24 arial");
-
-        //buttons
+        //button declarations
         Button twoPlayers = new Button("2 Players");
         Button threePlayers = new Button("3 Players");
         Button fourPlayers = new Button("4 Players");
@@ -88,8 +99,6 @@ public class Main extends Application  {
         //initialize borderPane
         BorderPane layout = new BorderPane();
 
-
-
         //intialize vbox for menuitems
         VBox menuItems = new VBox(25);
         menuItems.setAlignment(Pos.CENTER);
@@ -98,44 +107,48 @@ public class Main extends Application  {
         //animating
         Card displayCard = new Card(null,1,'S',false);
 
-
+        //set scale of display card on menu screen
         displayCard.View().setWidth(1.5 * cardImageWidth);
         displayCard.View().setHeight(1.5 * cardImageHeight);
 
         //create animation timer for rotating card on menu screen
         AnimationTimer timer = new AnimationTimer() {
-            int scalor = 0;
-            int offset = 1;
-            double rotator = 0;
+            int scalor = 0; //scale factor
+            int offset = 1; //offset for texture of front and back
             @Override
             public void handle(long now) {
-                scalor += 5;
+                scalor += 5; //add 5 to scalor
 
 
                 if(scalor < 180) {
+                    //if less than 180, the X scale will shrink to 0
                     displayCard.View().setScaleX( (180.0 - (double)scalor)/180.0);
 
                 }
                 else {
+                    //otherwise it will grow back to 1.0
                     double j = scalor - 181;
                     displayCard.View().setScaleX(j/180.0);
                 }
 
                 if(scalor == 180 && offset % 2 == 0) {
+                    //if offset is even, set texture to card
                    displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/AS.png")));
                 }
 
                 if(scalor == 180 && offset % 2 == 1){
+                    //if offset is odd, set texture to back of card
                     displayCard.View().setFill(new ImagePattern(new Image("/Assets/PlayingCards/red_back.png")));
                 }
 
+                //if scalor == 360, reset and increment offset
                 if(scalor >= 360) {
                     offset++;
                     scalor = 0;
 
                 }
 
-
+                //if offset == 10, reset offset
                 if(offset == 10) {
                     offset = 0;
                 }
@@ -154,27 +167,19 @@ public class Main extends Application  {
         startAndExit.getChildren().addAll(startButton,exitButton);
         startAndExit.setAlignment(Pos.CENTER);
 
+        //add start and exit buttons to vbox
         menuItems.getChildren().add(startAndExit);
-
-
-
-
 
         //set center object as menuItems
         layout.setCenter(menuItems);
 
-
-
-
-
         //event handlers for buttons
-
         //player count event handlers
         twoPlayers.setOnAction(e -> setPlayerCount(2));
         threePlayers.setOnAction(e -> setPlayerCount(3));
         fourPlayers.setOnAction(e -> setPlayerCount(4));
 
-        //start
+        //start event handler
         startButton.setOnAction(e -> {
             //instantiate an instance of Pitch
             Pitch game = new Pitch(window,players,windowWidth,windowHeight);
@@ -184,20 +189,23 @@ public class Main extends Application  {
 
             //start pitch game
             game.start();
-
-
         });
-        //exit
+
+        //exit event handler
         exitButton.setOnAction(e -> exitProgram());
 
+        //set style of layout
         layout.setStyle(titleStyle);
 
-
+        //set class data members
         this.fourPlayers = fourPlayers;
         this.threePlayers = threePlayers;
         this.twoPlayers = twoPlayers;
 
+        //set mainMenu as a scene with the layout created
         mainMenu = new Scene(layout,windowWidth,windowHeight);
+
+        //set stylesheet of mainMenu
         mainMenu.getStylesheets().add(getClass().getResource("/Assets/styles.css").toExternalForm());
 
     }
