@@ -159,7 +159,7 @@ public class Deck {
                         cards.get(i).setY(0);
                     }
                     else {
-                        //set leftmost objects translationg
+                        //set leftmost objects translations
                         offset = (size/2) - i;
                         cards.get(i).rotate(-1*((offset * angularOffset) + angularOffset/2));
                         cards.get(i).setY( (int)((double)offset/((double)3) * (double)yOffset));
