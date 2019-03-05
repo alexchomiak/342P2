@@ -7,19 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tightened up gui">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/342PitchProject_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Pitch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/PitchScoreCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/PitchScoreCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/342PitchProject/game/Scoreboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/342PitchProject/game/Scoreboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Pitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Pitch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/PitchDealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PitchDealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/PitchScoreCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PitchScoreCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Scoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Scoreboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/TrickList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/TrickList.java" afterDir="false" />
     </list>
@@ -150,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Scoreboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2533">
-              <caret line="149" column="11" selection-start-line="149" selection-start-column="11" selection-end-line="149" selection-end-column="11" />
+            <state relative-caret-position="-3464">
+              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#8190#8191#0" expanded="true" />
@@ -161,13 +149,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/TrickList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state relative-caret-position="1887">
+              <caret line="111" column="30" lean-forward="true" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1842#1843#0" expanded="true" />
+                <element signature="e#1881#1882#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -208,11 +198,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/PitchDealer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-353">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            <state relative-caret-position="-182">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1887#1888#0" expanded="true" />
@@ -335,9 +325,9 @@
         <option value="$PROJECT_DIR$/src/game/Player.java" />
         <option value="$PROJECT_DIR$/src/game/PitchScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/game/Pitch.java" />
-        <option value="$PROJECT_DIR$/src/game/Scoreboard.java" />
-        <option value="$PROJECT_DIR$/src/game/TrickList.java" />
         <option value="$PROJECT_DIR$/src/game/PitchDealer.java" />
+        <option value="$PROJECT_DIR$/src/game/TrickList.java" />
+        <option value="$PROJECT_DIR$/src/game/Scoreboard.java" />
       </list>
     </option>
   </component>
@@ -431,7 +421,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551775496911" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551776171258" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -722,7 +712,7 @@
     <frame x="-6" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21978022" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21978022" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -731,7 +721,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.080213904" />
-      <window_info active="true" anchor="bottom" x="2403" y="-1485" width="717" height="726" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
+      <window_info anchor="bottom" x="2403" y="-1485" width="717" height="726" id="Run" order="2" type="FLOATING" visible="true" weight="0.25408164" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24919786" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1103,10 +1093,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/PitchDealer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1887#1888#0" expanded="true" />
+            <element signature="e#1919#1920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Scoreboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2533">
-          <caret line="149" column="11" selection-start-line="149" selection-start-column="11" selection-end-line="149" selection-end-column="11" />
+        <state relative-caret-position="-3464">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#8190#8191#0" expanded="true" />
@@ -1117,22 +1119,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/TrickList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="1887">
+          <caret line="111" column="30" lean-forward="true" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/PitchDealer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1887#1888#0" expanded="true" />
-            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#1881#1882#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class PitchDealer implements Dealer {
     private Deck deck;
-    
+
     public PitchDealer() {
         deck = new Deck(null);
         initializeDeck();

@@ -30,7 +30,7 @@ public class Scoreboard {
     private ImageView trumpView;
 
 
-    Scoreboard(int numPlayers, Stage window) {
+    public Scoreboard(int numPlayers, Stage window) {
         //initialize displaypane for scoreboard
         displayPane = new FlowPane(Orientation.VERTICAL);
         displayPane.setVgap(10);
