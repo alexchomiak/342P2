@@ -52,12 +52,12 @@ class PitchDealerTest {
     }
 
     @Test
-    void dealHandShoulResetAfter10HandsDealt() {
-        for(int i = 0; i < 10; i++) {
+    void dealHand4Times() {
+        for(int i = 0; i < 4; i++) {
             assertEquals(6, testDealer.dealHand().size(), "Dealt hand should always equal 6");
         }
-        //test that deck is correct size, and that deck correctly resets when there are not enough cards left
-        assertEquals(40,testDealer.getDeck().getCards().size(), "Deck should reset at 9th hand dealt");
+        //test that deck is correct size
+        assertEquals(28,testDealer.getDeck().getCards().size(), "Deck should be 24 cards large");
     }
 
 }

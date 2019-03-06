@@ -49,9 +49,6 @@ public class PitchDealer implements Dealer {
         //initialize returnHand
         ArrayList<Card> returnHand = new ArrayList<Card>();
 
-        //if deck size is less than 6, reset deck
-        if(deck.getCards().size() < 6) resetDeck();
-
         //shuffle the deck
         Collections.shuffle(deck.getCards());
 

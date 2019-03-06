@@ -86,7 +86,7 @@ public class Card {
 
         if (overCard) {
             //if overcard, set stroke color to orangered
-            cardRect.setStroke(Color.ORANGERED);
+            cardRect.setStroke(player1);
 
             //set stroke width to 2px
             cardRect.setStrokeWidth(2);

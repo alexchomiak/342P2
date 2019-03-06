@@ -347,7 +347,7 @@ public class PitchScoreCalculator {
         }
 
         //Next Round/EndGame prompt button
-        String promptText = "Next Round";
+        String promptText = "Play Next Hand";
         if(playersWon) promptText = "End Game (Winner Found)";
         Button nextRound = new Button(promptText);
 

@@ -16,7 +16,7 @@ public class TrickList {
     private Label Prompt;
     private Label PromptDescription;
     private ArrayList<HBox> tricks;
-    private final double cardScaleFactor = .45;
+    private final double cardScaleFactor = .50;
     private final int placeHolderSize = (int)Math.floor(cardScaleFactor * (double)cardImageHeight);
 
     public TrickList() {
@@ -43,7 +43,7 @@ public class TrickList {
         displayPane.setStyle(rightSideBarStyle);
 
         //set spacing
-        displayPane.setVgap(10);
+        displayPane.setVgap(5);
 
         //initialize tricks list
         tricks = new ArrayList<HBox>();
@@ -56,7 +56,7 @@ public class TrickList {
         displayPane.getChildren().add(PromptContainer);
 
         //add placeholder rectangle for spacing
-        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 60 ,5);
+        Rectangle placeholder = new Rectangle((int)(cardScaleFactor * cardImageWidth * 4) + 40 ,1);
         placeholder.setOpacity(0.0);
         displayPane.getChildren().add(placeholder);
 

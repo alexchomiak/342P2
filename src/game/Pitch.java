@@ -217,6 +217,9 @@ public class Pitch implements DealerType{
         //reset player decks
         resetPlayers(true);
 
+        //if there are not enough cards for all players reset deck
+        if(pitchDealer.getDeck().getCards().size() < (playerCount * 6)) pitchDealer.resetDeck();
+
         //give all players their cards
         Player iterator = startPlayer;
         while(iterator.getHand().getCards().size() == 0) {

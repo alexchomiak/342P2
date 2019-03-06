@@ -36,15 +36,11 @@ public class Scoreboard {
         //initialize displaypane for scoreboard
         displayPane = new FlowPane(Orientation.VERTICAL);
         displayPane.setVgap(10);
-        displayPane.setHgap(20);
+        displayPane.setHgap(0);
         displayPane.setPadding(new Insets(10,10,10,20));
 
-        //gameOptions hbox initialization
-        HBox gameOptions = new HBox(0);
-        gameOptions.setAlignment(Pos.CENTER);
-
         //initialize resetGame button
-        this.resetGame = new Button("Reset Game");
+        this.resetGame = new Button("Start A New Game");
         resetGame.setOnAction(e -> {
             game.resetGame();
         });
@@ -55,16 +51,17 @@ public class Scoreboard {
             game.getWindow().setScene(game.getMainMenu());
         });
 
+        //set scale
         resetGame.setScaleX(.75);
         resetGame.setScaleY(.75);
         exitGame.setScaleX(.75);
         exitGame.setScaleY(.75);
 
-        //add exit game & resetgame to gameoptions
-        gameOptions.getChildren().addAll(resetGame,exitGame);
+        exitGame.setAlignment(Pos.CENTER);
 
         //add gameoptions to scoreboard
-        displayPane.getChildren().add(gameOptions);
+        displayPane.getChildren().add(resetGame);
+        displayPane.getChildren().add(exitGame);
 
         //add turn prompt subject
         turnSubjectPrompt = new Label("Turn");
@@ -102,7 +99,7 @@ public class Scoreboard {
 
 
         //create placeholder rectangle for spacing
-        Rectangle placeholder = new Rectangle(155,50);
+        Rectangle placeholder = new Rectangle(155,20);
         placeholder.setOpacity(0);
         displayPane.getChildren().add(placeholder);
 
@@ -220,7 +217,12 @@ public class Scoreboard {
 
             if(bids.get(i) == 0) {
                 prompt = "Player " + Integer.toString(i + 1) + " passed.";
+
+                if(i == 0) {
+                    prompt = "You passed.";
+                }
             }
+
             else if(bids.get(i) == -1) {
                prompt = "Player " + Integer.toString(i + 1) + " has not bid.";
                if(i == 0) {
